@@ -16,13 +16,15 @@
         <p class="set-range">Set Range</p>
         <form class="min-range-form">
           <label class="min-range-label">Min Range</label>
-          <input type="number" value="number" class="min-range" id="min-input-field">
+          <input type="number" pattern="0-9" class="min-range" id="min-input-field">
         </form>
         <form class="max-range-form">  
           <label class="max-range-label">Max Range</label>
-          <input type="number" value="number" class="max-range" id="max-input-field">
-          <button type="submit" name="update" class="update-button" id="update-button">Update</button>
+          <input type="number" pattern="0-9" class="max-range" id="max-input-field">
+          <button type="submit" name="update" class="update-button" id="update-btn">Update</button>
         </form>
+        <p class="error-p-range-1"></p> <!-- added for JS -->
+        <p class="error-p-range-2"></p> <!-- added for JS -->
       </article>
       <article class="challenger-input-field">
         <p class="current-range">The Current Range is<span class="min-number">1</span>to<span class="max-number">100</span></p>
@@ -33,6 +35,7 @@
           <label class="guess-1-label">Guess</label>
           <input type="text" value="number" class="guess-1-input" id="guess-chall-1">
         </form>
+        <p class="error-p-chal-1"></p> <!-- added for JS -->
         <p class="challenger-2-text">Challenger 2</p>
         <form class="challenger-2-form">
           <label class="name-2-label">Name</label>
@@ -40,6 +43,7 @@
           <label class="guess-2-label">Guess</label>
           <input type="text" value="number" class="guess-2-input" id="guess-chall-2">
         </form>
+        <p class="error-p-chal-2"></p> <!-- added for JS -->
         <div class="button-group">
           <button type="submit" name="submit-guess" class="submit-guess=button" id="submit-guess-button">Submit Guess</button>
           <button type="submit" name="reset-game" class="reset-game-button" id="reset-button">Reset Game</button>
@@ -75,69 +79,7 @@
         </footer>  
       </article>  
     </section>
-=======
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	<title>Number Guesser</title>
-</head>
-<body>
-  <header>
-  	<h1><span>Number</span>Guesser<h1>
-  		<h2>Ultimate Challenger Edition</h2>
-  </header>
-  <main class="container">
-  	<section>
-  		<article>
-  			<p>Set Range</p>
-  			<form>
-  				<label>Min Range</label>
-  				<input type="text" value="number">
-  				<label>Max Range</label>
-  				<input type="text" value="number">
-  				<button type="submit" name="update">Update</button>
-  			</form>
-  		</article>
-  		<article>
-  			<p>The Current Range is<span>1</span>to<span>100</span></p>
-  			<p>Challenger 1</p>
-  			<form>
-  				<label>Name</label>
-  				<input type="text" value="number">
-  				<label>Guess</label>
-  				<input type="text" value="number">
-  			</form>
-  			<p>Challenger 2</p>
-  			<form>
-  				<label>Name</label>
-  				<input type="text" value="number">
-  				<label>Guess</label>
-  				<input type="text" value="number">
-  			</form>
-  			<div>
-  				<button type="submit" name="submit-guess">Submit Guess</button>
-  				<button type="submit" name="reset-game">Reset Game</button>
-  				<button type="submit" name="clear-game">Clear Game</button>
-  			</div>	
-  		</article>
-  		<article>
-  			<h2>Latest Score</h2>
-  			<h3>Challenger 1 Name</h3>
-  			<p>current guess</p>
-  			<p>97</p>
-  			<p>that's too high</p>
-  			<h3>Challenger 2 Name</h3>
-  			<p>current guess</p>
-  			<p>3</p>
-  			<p>that's too low</p>
-  		</article>	
-  	</section>
-  	<section>
-  		<article>
-  			<header><h2><span>Challenger 1 Name</span>vs<span>Challenger 2 Name</span><h2></header>
-  			<h3>Challenger 2 Name</h3>
-  			<p>Winner</p>
-  			<footer><span>47</span>Guesses<span>1.35</span>minutes<img src="images/delete.svg"></footer>	
-  		</article>	
-  	</section>
-</main>
+  </main>
+  <script type="text/javascript" src="main.js"></script>
 </body>
 </html>
