@@ -13,9 +13,12 @@ var resetBtn = document.querySelector('#reset-button');
 var clearBtn = document.querySelector('#clear-button');
 var currentGuess1 = document.querySelector('#chall-number-1');
 var currentGuess2 = document.querySelector('#chall-number-2');
+var resultMsg1 = document.querySelector('.challenger-1-result-message');
+var resultMsg2 = document.querySelector('.challenger-2-result-message');
 
 updateBtn.addEventListener('click', setNumRange);
 submitBtn.addEventListener('click', handleSubmit);
+resetBtn.addEventListener('click', handleReset);
 
 //FYI: input fields store in strings and parseInt() will turn into number
 
@@ -54,9 +57,10 @@ function handleSubmit(event) {
   console.log(currentGuess1.innerText);
   currentGuess2.innerText = parseInt(guess2Input.value);
   console.log(currentGuess2.innerText);
+  name1Input.innerText = parseInt(guess2Input.value);
+  displayGuessMessage ();
 }
 
-//   name1Input.innerText = 
 //   console.log(name1Input.value);
 //   console.log(name2Input.value)
 // }
@@ -72,6 +76,26 @@ function updateChallGuess() {
 //error messages should be displayed in latest score section underneath current guess
 //of: "that's too high" or "that's too low". When player guesses right "BOOM" is
 //displayed and new card is created in the left section
+
+function displayGuessMessage() {
+  if (parseInt(currentGuess1.value) > randomNum) {
+    resultMsg1.innerText = "That's too high"; 
+  } else if (parseInt(currentGuess1.value) < randomNum) {
+    resultMsg1.innerText = "That's too low";
+  } else {
+    resultMsg1.innerText = "BOOM!";
+    //function to populate card here
+  }
+
+  if (parseInt(currentGuess2.value) > randomNum) {
+    resultMsg2.innerText = "That's too high"; 
+  } else if (parseInt(currentGuess2.value) < randomNum) {
+    resultMsg2.innerText = "That's too low";
+  } else {
+    resultMsg2.innerText = "BOOM!";
+    //function to populate card here
+  }
+};  
 
 function checkGuessMessages() {
 
@@ -90,13 +114,34 @@ function handleClear() {
 
 }
 
+
 //reset button will clear the game and reset the random number. If
 //nothing to rest the button will be disabled.
 
 function handleReset() {
+  event.preventDefault();
+  var resetForm1 = document.querySelector('challenger-1-form');
+  var resetForm2 = document.querySelector('challenger-2-form');
+  var canSubmit =
+  document.querySelector('.challenger-1-form').reset();
+  document.querySelector('.challenger-2-form').reset();
 
 }
 	
+function checkform() {
+  var f = document.forms["theform"].elements;
+  var canreset = true;
+  for (var i = 0; i < f.length; i++) {
+        if (f[i].value.length == 0) cansubmit = false;
+}
+  if (canreset) {
+    document.getElementById('resetBtn').disabled = false;
+    }
+  else {
+    document.getElementById('resetBtn').disabled = 'disabled';
+    }
+}
+
 function disableButtons() {
 
 }
