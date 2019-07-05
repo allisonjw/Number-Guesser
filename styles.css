@@ -5,38 +5,48 @@
   box-sizing: border-box;
 }
 
-/* header */
+/*******HEADER*******/
 
 header {
  background-color: #404041;
- height: 100px;
- width: 100%;
+ height: 168px;
 }
 
 h1 {
   color: #DD1972;
   text-align: center;
-  font-size: 32px;
+  font-size: 82px;
   font-weight: 300;
   text-transform: uppercase;
 }
 
-h3 {
-  font-weight: 700;
-  color: #404041;
-  font-size: 18px;
+.subtext-header-line {
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 300;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+p.subtext-header-line::before,
+p.subtext-header-line::after {
+  border: 1px solid; 
+  content: '';
+  display: inline-block;
+  margin: 0 10px 10px 0;
+  width: 9%;
+}
+
+p.subtext-header-line::after {
+  color: white;
+  margin: 0 0 10px 10px;
 }
 
 .bold-header {
   font-weight: 700;
 }
 
-.subtext-header-line {
-  color: #ffffff;
-  font-size: 16px;
-}
-
-/* main section */
+/*********MAIN*******/
 
 .container {
   display: flex;
@@ -57,11 +67,7 @@ h3 {
   padding: 15px;
 }
 
-.right-section{ 
-  flex: 1; 
-}
-
-/* Set Range */
+/********SET RANGE ARTICLE*******/
 
 .range-field {
   display: flex;
@@ -75,6 +81,12 @@ h3 {
   border: 2px solid #D0D2D3;
   border-radius: 2px;
   margin-top: 7px;
+}
+
+h3 {
+  font-weight: 700;
+  color: #404041;
+  font-size: 18px;
 }
 
 .set-range-form {
@@ -124,7 +136,7 @@ h3 {
   margin: 0px 20px 0px 20px;
 }
 
-/* Challenger Input */
+/*********CHALL INPUT ARTICLE***********/
 
 .challenger-input-article {
   height: 300px;
@@ -211,7 +223,7 @@ h3 {
   margin: 0px 40px 0px 40px;
 }
 
-/* Score Display */
+/********SCORE DISPLAY ARTICLE*********/
 
 .score-display {
   display: flex;
@@ -255,3 +267,38 @@ h3 {
   flex-direction: column;
   align-content: center;
 }*/
+
+/***********WINNER CARD ARTICLE*************/
+
+.right-section{ 
+  background-color: #D0D2D3;
+  flex: 1; 
+}
+
+.winner-card {
+  background-color:#F7F7F7;
+  border-color: #6e6e6e;
+  border-style: solid;
+  border-width: 2px;
+  margin: 14px;
+  padding: 10px;
+  text-align: center;
+}
+
+h4 {
+  color: white;
+}
+
+hr {
+  border: 1px solid #D0D2D3;
+  margin: 2px 5px 2px 5px;
+  width: 100%;
+}
+
+p.card-footer {
+  margin: 8px;
+}
+
+footer {
+  margin: 10px;
+}
