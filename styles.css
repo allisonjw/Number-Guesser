@@ -1,0 +1,304 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
+}
+
+/*******HEADER*******/
+
+header {
+ background-color: #404041;
+ height: 168px;
+}
+
+h1 {
+  color: #DD1972;
+  text-align: center;
+  font-size: 82px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.subtext-header-line {
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 300;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+p.subtext-header-line::before,
+p.subtext-header-line::after {
+  border: 1px solid; 
+  content: '';
+  display: inline-block;
+  margin: 0 10px 10px 0;
+  width: 9%;
+}
+
+p.subtext-header-line::after {
+  color: white;
+  margin: 0 0 10px 10px;
+}
+
+.bold-header {
+  font-weight: 700;
+}
+
+/*********MAIN*******/
+
+.container {
+  display: flex;
+  flex-direction: row;
+  /*font-size: 16px;*/
+  flex-wrap: wrap;
+  width: 100%;
+  min-width: 340px;
+}
+
+.left-section {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  background-color: #F7F7F7;
+  color: #6E6E6E;
+  padding: 15px;
+}
+
+/********SET RANGE ARTICLE*******/
+
+.range-field {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  height: 120px;
+  font-weight: 700;
+  /*font-size: 12px;*/
+  color: #404041;
+  background-color: #ffffff;
+  border: 2px solid #D0D2D3;
+  border-radius: 2px;
+  margin-top: 7px;
+}
+
+h3 {
+  font-weight: 700;
+  color: #404041;
+  font-size: 18px;
+}
+
+.set-range-form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.set-range {
+  margin: 10px 0px 10px 10px; 
+  /*align-items: stretch;*/
+  /*height: 10px;*/
+}
+
+/*.min-range-form {
+  color: #6E6E6E;
+  margin: 40px 10px;
+}*/
+
+.min-range,
+.max-range {
+  height: 35px;
+  width: 200px;
+}
+/*
+.min-range-form,
+.max-range-form {
+  color: #6E6E6E;
+}*/
+
+.min-range-label,
+.max-range-label {
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.update-button {
+  border-radius: 20px 20px 20px 20px;
+  background-color: #6E6E6E;
+  color: #ffffff;
+  height: 35px;
+  text-transform: uppercase;
+  width: 135px;
+  font-weight: 700;
+  font-size: 18px;
+  margin: 0px 20px 0px 20px;
+}
+
+/*********CHALL INPUT ARTICLE***********/
+
+.challenger-input-article {
+  height: 300px;
+  background-color: #ffffff;
+  border: 2px solid #D0D2D3;
+  border-radius: 2px;
+  margin-top: 7px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.current-range {
+  color: #404041;
+  font-weight: 300;
+  margin: 10px 0px 10px 10px; 
+}
+
+.min-number,
+.max-number {
+  font-weight: 700;
+  text-decoration: underline;
+
+}
+
+.challenger-1-text,
+.challenger-2-text {
+  /*display: block;*/
+  height: 20px;
+  font-weight: 700;
+  color: #404041;
+  font-size: 18px;
+}
+
+.name-1-label,
+.name-2-label {
+  display: block;
+  flex-wrap: wrap;
+}
+
+.guess-1-label,
+.guess-2-label {
+  display: block;
+  flex-wrap: wrap;
+}
+
+.challenger-1-container {
+  display: flex;
+}
+
+.challenger-2-container {
+  display: flex;
+}
+
+.name-1-input,
+.name-2-input {
+  flex-wrap: wrap;
+  width: 300px;
+  height: 35px;
+}
+
+.guess-1-input,
+.guess-2-input {
+  flex-wrap: wrap;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+}
+
+.submit-guess-button,
+.reset-game-button,
+.clear-game-button {
+  flex-direction: row;
+  border-radius: 20px 20px 20px 20px;
+  background-color: #6E6E6E;
+  color: #ffffff;
+  height: 35px;
+  text-transform: uppercase;
+  width: 170px;
+  font-weight: 700;
+  font-size: 18px;
+  margin: 0px 40px 0px 40px;
+}
+
+/********SCORE DISPLAY ARTICLE*********/
+
+.score-display {
+  display: flex;
+  height: 200px;
+  flex-direction: column;
+  background-color: #ffffff;
+  border: 2px solid #D0D2D3;
+  border-radius: 2px;
+  margin-top: 7px;
+}
+
+.latest-score-text {
+  font-weight: 700;
+  color: #404041;
+  font-size: 18px;
+}
+.latest-score-container {
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.latest-score-right,
+.latest-score-left {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.pink-guess {
+  color: #DD1972;
+  font-weight: bold;
+  font-size: 65px;
+}
+
+/*
+.latest-score-left,
+.latest-score-right {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}*/
+
+/***********WINNER CARD ARTICLE*************/
+
+.right-section{ 
+  background-color: #D0D2D3;
+  flex: 1; 
+}
+
+.winner-card {
+  background-color:#F7F7F7;
+  border-color: #6e6e6e;
+  border-style: solid;
+  border-width: 2px;
+  margin: 14px;
+  padding: 10px;
+  text-align: center;
+}
+
+h4 {
+  color: white;
+}
+
+hr {
+  border: 1px solid #D0D2D3;
+  margin: 2px 5px 2px 5px;
+  width: 100%;
+}
+
+p.card-footer {
+  margin: 8px;
+}
+
+footer {
+  margin: 10px;
+}

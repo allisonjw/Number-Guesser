@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet">
   <title>Number Guesser</title>
 </head>
 <body>
@@ -26,7 +27,7 @@
         <p class="error-p-range-1"></p> <!-- added for JS -->
         <p class="error-p-range-2"></p> <!-- added for JS -->
       </article>
-      <article class="challenger-input-field">
+      <article class="challenger-input-article">
         <p class="current-range">The Current Range is<span class="min-number">1</span>to<span class="max-number">100</span></p>
         <p class="challenger-1-text">Challenger 1</p>
         <form class="challenger-1-form">
@@ -51,8 +52,9 @@
         </div>  
       </article>
       <article class="score-display">
-      <div class="latest-score-right">
         <h2 class="latest-score-text">Latest Score</h2>
+      <div class="latest-score-container">
+      <div class="latest-score-right">
         <h3 class="player-name" id="player-1-name">Challenger 1 Name</h3>
         <p class="current-1-guess">current guess</p>
         <output class="pink-guess" id="chall-number-1">#</output>
@@ -64,12 +66,13 @@
         <output class="pink-guess" id="chall-number-2">#</output>
         <p class="challenger-2-result-message">placeholder</p>
       </div>
+      </div> 
       </article>  
     </section>
     <section class="right-section">
       <article class="winner-card">
         <header class="card-header">
-          <h2><span>Challenger 1 Name</span>vs<span>Challenger 2 Name</span><h2>
+          <h3><span>Challenger 1 Name</span>vs<span>Challenger 2 Name</span><h3>
         </header>
         <h3>Challenger 2 Name</h3>
         <p class="winner-text">Winner</p>
@@ -79,7 +82,6 @@
         </footer>  
       </article>  
     </section>
-  </main>
-  <script type="text/javascript" src="main.js"></script>
+</main>
 </body>
 </html>
