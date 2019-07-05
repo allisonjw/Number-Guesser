@@ -1,9 +1,11 @@
-var randomNum = 0;
+var randomNum = null;
+var minNum = 1
+var maxNum = 100
 var minInput = document.querySelector('#min-input-field');
 var maxInput = document.querySelector('#max-input-field');
 var updateBtn = document.querySelector('#update-btn');
-var minNum = document.querySelector('.min-number');
-var maxNum = document.querySelector('.max-number');
+var updateMinNumHTML = document.querySelector('.min-number');
+var updateMaxNumHTML = document.querySelector('.max-number');
 var name1Input = document.querySelector('.name-1-input');
 var name2Input = document.querySelector('.name-2-input');
 var guess1Input = document.querySelector('.guess-1-input');
@@ -18,13 +20,15 @@ var resultMsg2 = document.querySelector('.challenger-2-result-message');
 
 updateBtn.addEventListener('click', setNumRange);
 submitBtn.addEventListener('click', handleSubmit);
+clearBtn.addEventListener('click', handleClear);
 resetBtn.addEventListener('click', handleReset);
 
 //FYI: input fields store in strings and parseInt() will turn into number
 
-  // ****PHASE ONE***********
+// ****PHASE ONE***********
 
-//update button will generate a random number from min and max range inputs and will be displayed in current range spans in paragraph
+
+//function declaration that generates a random number
 
 function genRanNumber(min, max) {
   var num1 = Math.ceil(min);
@@ -32,24 +36,28 @@ function genRanNumber(min, max) {
   return Math.floor(Math.random() * (num2 - num1 + 1)) + num1;
 };
 
+//places the values received in the min and max range inputs into the paragraph text in the second card, also reassigns the random number generated to randomNum
+
 function setNumRange(event) {
   event.preventDefault();
   var minNumber = parseInt(minInput.value);
   var maxNumber = parseInt(maxInput.value);
-  minNum.innerText = minNumber;
-  maxNum.innerText = maxNumber;
+  updateMinNumHTML.innerText = minNumber;
+  updateMaxNumHTML.innerText = maxNumber;
 
   console.log(randomNum);
   // genRanNumber(1, 100);
   // console.log(genRanNumber(minNumber, maxNumber));
   randomNum = genRanNumber(minNumber, maxNumber);
 
-  console.log(randomNum);
+  // console.log(randomNum);
 };
 
 //name input fields can accept alpha-numeric character and guess input field can accept ONLY numeric value.
 //when player hits submit button the names and current guesses will be displayed in latest 
 // score(score display article).
+
+//places the values of the player's guesses into the current guess spot on the third card, also invokes the function displayGuessMessage
 
 function handleSubmit(event) {
   event.preventDefault();
@@ -58,12 +66,8 @@ function handleSubmit(event) {
   currentGuess2.innerText = parseInt(guess2Input.value);
   console.log(currentGuess2.innerText);
   name1Input.innerText = parseInt(guess2Input.value);
-  displayGuessMessage ();
+  displayGuessMessage();
 }
-
-//   console.log(name1Input.value);
-//   console.log(name2Input.value)
-// }
 
 function updateChallName() {
 
@@ -73,9 +77,7 @@ function updateChallGuess() {
 
 }
 
-//error messages should be displayed in latest score section underneath current guess
-//of: "that's too high" or "that's too low". When player guesses right "BOOM" is
-//displayed and new card is created in the left section
+//conditional logic that compares the numeric values of the current guesses to the random number generated and then populates the 'too high', 'too low', 'BOOM!' message on the third card, also needs to invoke the function to create the winning card on the right
 
 function displayGuessMessage() {
   if (parseInt(currentGuess1.value) > randomNum) {
@@ -106,26 +108,27 @@ function displayWinnerCard() {
 }
 
 
-//clear button clears the 4 input fields(guesses and names) but
-//does NOT reset the random number. Button is disabled if there is 
-//if inputs are empty
+//clear button clears the 4 input fields (guesses and names) but does NOT reset the random number - button is disabled if there are no values in the form fields
 
 function handleClear() {
-
+  event.preventDefault();
+  document.querySelector('.challenger-1-form').reset();
+  document.querySelector('.challenger-2-form').reset();
 }
 
 
-//reset button will clear the game and reset the random number. If
-//nothing to rest the button will be disabled.
+//reset button will clear the game and reset the random number - button is disabled if there are no values to reset in the form fields
 
 function handleReset() {
   event.preventDefault();
-  var resetForm1 = document.querySelector('challenger-1-form');
-  var resetForm2 = document.querySelector('challenger-2-form');
-  var canSubmit =
+  document.querySelector('.min-range-form').reset();
+  document.querySelector('.max-range-form').reset();
   document.querySelector('.challenger-1-form').reset();
   document.querySelector('.challenger-2-form').reset();
-
+  document.querySelector('.min-number').innerText = '1';
+  document.querySelector('.max-number').innerText = '100';
+  randomNum = genRanNumber(1, 100);
+  console.log(randomNum);
 }
 	
 function checkform() {
