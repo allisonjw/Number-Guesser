@@ -132,6 +132,11 @@ h3 {
   color: #FFFFFF;
 } 
 
+.reset-game-button:hover:disabled, 
+.clear-game-button:hover:disabled {
+  background-color: #6E6E6E;
+}
+
 /*********CHALL INPUT ARTICLE***********/
 
 .challenger-input-article {

@@ -25,6 +25,7 @@ var winner;
 var loser;
 minInput.focus();
 
+
 updateBtn.addEventListener('click', setNumRange);
 submitBtn.addEventListener('click', handleSubmit);
 clearBtn.addEventListener('click', handleClear);
@@ -34,6 +35,11 @@ name2Input.addEventListener('keyup', enableClear);
 guess1Input.addEventListener('keyup', enableClear);
 guess2Input.addEventListener('keyup', enableClear);
 cardField.addEventListener('click', deleteCard)
+document.addEventListener('DOMContentLoaded', function () {
+  randomNum = genRanNumber(1, 100);
+  minInput.focus();
+});
+
 //FYI: input fields store in strings and parseInt() will turn into number
 
 // ****PHASE ONE***********
@@ -55,6 +61,7 @@ function setNumRange(event) {
   var maxNumber = parseInt(maxInput.value);
   updateMinNumHTML.innerText = minNumber;
   updateMaxNumHTML.innerText = maxNumber;
+
   randomNum = genRanNumber(minNumber, maxNumber);
 };
 
@@ -76,6 +83,12 @@ function handleSubmit(event) {
   resetBtn.disabled = false;
   clearBtn.disabled = false;
 }
+
+// function enableSubmit {
+//   if (name1Input.innerText != '') {
+//     submitBtn = false;
+//   }
+// }
 
 function updateChallName() {
 
@@ -152,6 +165,8 @@ function deleteCard(e) {
 
 function handleClear() {
   event.preventDefault();
+  document.querySelector('.min-range-form').reset();
+  document.querySelector('.max-range-form').reset();
   document.querySelector('.challenger-1-form').reset();
   document.querySelector('.challenger-2-form').reset();
   disableClear();
@@ -169,13 +184,10 @@ function enableClear() {
 
 function handleReset() {
   event.preventDefault();
-  document.querySelector('.min-range-form').reset();
-  document.querySelector('.max-range-form').reset();
-  document.querySelector('.challenger-1-form').reset();
-  document.querySelector('.challenger-2-form').reset();
   document.querySelector('.min-number').innerText = '1';
   document.querySelector('.max-number').innerText = '100';
   counter = 0;
+  handleClear();
   disableReset();
   randomNum = genRanNumber(1, 100);
 }
