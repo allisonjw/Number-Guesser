@@ -1,22 +1,22 @@
 * {
-  padding: 0;
-  margin: 0;
-  font-family: 'Open Sans', sans-serif;
   box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 /*******HEADER*******/
 
 header {
- background-color: #404041;
- height: 168px;
+  background-color: #404041;
+  height: 168px;
 }
 
 h1 {
   color: #DD1972;
-  text-align: center;
   font-size: 82px;
   font-weight: 300;
+  text-align: center;
   text-transform: uppercase;
 }
 
@@ -49,202 +49,195 @@ p.subtext-header-line::after {
 /*********MAIN*******/
 
 .container {
+  align-content: center;
   display: flex;
-  flex-direction: row;
-  /*font-size: 16px;*/
   flex-wrap: wrap;
   width: 100%;
-  min-width: 340px;
 }
 
 .left-section {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 100%;
-  flex: 1;
   background-color: #F7F7F7;
   color: #6E6E6E;
-  padding: 15px;
+  display: flex;
+  /*flex-basis: 100%;*/
+  flex-direction: column;
+  flex: 1;
+  padding: 10px;
+  width: 50%;
+}
+
+.range-field,
+.challenger-input-article,
+.score-display,
+.winner-card {
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid #D0D2D3;
+  border-radius: 2px;
+  background-color: #ffffff;
 }
 
 /********SET RANGE ARTICLE*******/
 
 .range-field {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  height: 120px;
   font-weight: 700;
-  /*font-size: 12px;*/
-  color: #404041;
-  background-color: #ffffff;
-  border: 2px solid #D0D2D3;
-  border-radius: 2px;
-  margin-top: 7px;
 }
 
 h3 {
-  font-weight: 700;
-  color: #404041;
   font-size: 18px;
-}
-
-.set-range-form {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
+  font-weight: 700;
 }
 
 .set-range {
-  margin: 10px 0px 10px 10px; 
-  /*align-items: stretch;*/
-  /*height: 10px;*/
+  font-size: 20px;
 }
 
-/*.min-range-form {
-  color: #6E6E6E;
-  margin: 40px 10px;
-}*/
+.min-range-form,
+.max-range-form {
+  display: inline-block;
+  width: 36%;
+}
 
 .min-range,
 .max-range {
   height: 35px;
-  width: 200px;
+  margin-top: 4px;
+  width: 100%;
 }
-/*
-.min-range-form,
-.max-range-form {
-  color: #6E6E6E;
-}*/
 
 .min-range-label,
 .max-range-label {
-  font-weight: 300;
-  font-size: 14px;
+  display: block;
+  font-weight: 400;
+  font-size: 18px;
 }
 
 .update-button {
-  border-radius: 20px 20px 20px 20px;
   background-color: #6E6E6E;
+  border-radius: 500px;
   color: #ffffff;
-  height: 35px;
-  text-transform: uppercase;
-  width: 135px;
-  font-weight: 700;
   font-size: 18px;
-  margin: 0px 20px 0px 20px;
+  font-weight: 700;
+  height: 35px;
+  margin: 0 10px 0 10px;
+  text-transform: uppercase;
+  width: 111px;
 }
+
+.update-button:hover,
+.submit-guess-button:hover,
+.reset-game-button:hover, 
+.clear-game-button:hover {
+  background-color: #dd1972;
+  color: #FFFFFF;
+} 
 
 /*********CHALL INPUT ARTICLE***********/
 
 .challenger-input-article {
-  height: 300px;
-  background-color: #ffffff;
-  border: 2px solid #D0D2D3;
-  border-radius: 2px;
-  margin-top: 7px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
 }
 
 .current-range {
-  color: #404041;
   font-weight: 300;
-  margin: 10px 0px 10px 10px; 
+  margin: 10px 0 10px 0; 
 }
 
 .min-number,
 .max-number {
   font-weight: 700;
+  margin: 0 5px 0 5px;
   text-decoration: underline;
-
 }
 
 .challenger-1-text,
 .challenger-2-text {
-  /*display: block;*/
-  height: 20px;
-  font-weight: 700;
-  color: #404041;
   font-size: 18px;
+  font-weight: 700;
+  height: 20px;
+  margin: 13px 0 13px 0;
 }
 
+.guess-1-label,
+.guess-2-label,
 .name-1-label,
 .name-2-label {
   display: block;
   flex-wrap: wrap;
 }
 
-.guess-1-label,
-.guess-2-label {
-  display: block;
-  flex-wrap: wrap;
-}
-
-.challenger-1-container {
+.challenger-1-form, 
+.challenger-2-form {
   display: flex;
+  flex-direction: row;
 }
 
-.challenger-2-container {
-  display: flex;
+.name1,
+.name2 {
+  margin-top: 3px;
+  width: 60%;
 }
 
-.name-1-input,
-.name-2-input {
-  flex-wrap: wrap;
-  width: 300px;
-  height: 35px;
+.guess1,
+.guess2 {
+  margin-top: 3px;
+  width: 40%;
 }
 
 .guess-1-input,
-.guess-2-input {
+.guess-2-input,
+.name-1-input,
+.name-2-input {
   flex-wrap: wrap;
+  height: 35px;
 }
 
+.name-1-input,
+.name-2-input,
+.guess-1-input,
+.guess-2-input {
+  width: 92%;
+}
+
+
 .button-group {
-  display: flex;
-  justify-content: center;
+  display: block;
+  flex-wrap: wrap;
+  margin: auto;
 }
 
 .submit-guess-button,
 .reset-game-button,
 .clear-game-button {
-  flex-direction: row;
-  border-radius: 20px 20px 20px 20px;
   background-color: #6E6E6E;
+  border-radius: 500px;
   color: #ffffff;
-  height: 35px;
-  text-transform: uppercase;
-  width: 170px;
-  font-weight: 700;
   font-size: 18px;
-  margin: 0px 40px 0px 40px;
+  font-weight: 700;
+  height: 35px;
+  margin: 33px 5px 5px 5px;
+  text-transform: uppercase;
+  width: 165px;
 }
 
 /********SCORE DISPLAY ARTICLE*********/
 
 .score-display {
   display: flex;
-  height: 200px;
   flex-direction: column;
-  background-color: #ffffff;
-  border: 2px solid #D0D2D3;
-  border-radius: 2px;
-  margin-top: 7px;
 }
 
 .latest-score-text {
+  font-size: 20px;
   font-weight: 700;
-  color: #404041;
-  font-size: 18px;
 }
+
 .latest-score-container {
+  align-items: center;
   display: flex;
   flex: 1;
   justify-content: space-around;
-  align-items: center;
 }
 
 .latest-score-right,
@@ -252,6 +245,11 @@ h3 {
   align-items: center;
   display: flex;
   flex-direction: column;
+  width: 50%;
+}
+
+.latest-score-right {
+  border-right: 1px solid #D0D2D3;
 }
 
 .pink-guess {
@@ -260,33 +258,53 @@ h3 {
   font-size: 65px;
 }
 
-/*
-.latest-score-left,
-.latest-score-right {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-}*/
-
 /***********WINNER CARD ARTICLE*************/
 
 .right-section{ 
   background-color: #D0D2D3;
+  color: #6E6E6E;
+  display: flex;
+  flex-direction: column;
   flex: 1; 
 }
 
 .winner-card {
   background-color:#F7F7F7;
-  border-color: #6e6e6e;
-  border-style: solid;
-  border-width: 2px;
-  margin: 14px;
-  padding: 10px;
+  border: 2px solid #6e6e6e;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.card-header {
+  color: white;
+  font-weight: 300;
+}
+
+h4  {
+  font-weight: 300;
+  margin: 0 15px 0 15px;
   text-align: center;
 }
 
-h4 {
-  color: white;
+.winner-name,
+.winner-text {
+  font-size: 33px;
+  text-align: center;
+}
+
+.winner-name {
+  margin-top: 20px;
+}
+
+.winner-text {
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.card-chall-1,
+.card-chall-2 {
+  font-weight: 800;
+  margin: 0 20px;
 }
 
 hr {
@@ -295,10 +313,25 @@ hr {
   width: 100%;
 }
 
-p.card-footer {
-  margin: 8px;
+footer {
+  margin: auto;
+  display: block;
 }
 
-footer {
-  margin: 10px;
+.winner-number-of-guesses {
+  float: left;
+  margin-right: 2px;
+}
+
+.winner-time {
+  margin-left: 155px;
+}
+
+.winner-close-button {
+  background-color: #6E6E6E;
+  border-radius: 100%;
+  color: #F7F7F7;
+  float: right;
+  width: 23px;
+  height: 23px;
 }
