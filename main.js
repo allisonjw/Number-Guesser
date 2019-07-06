@@ -20,7 +20,6 @@ var currentGuess2 = document.querySelector('#chall-number-2');
 var resultMsg1 = document.querySelector('.challenger-1-result-message');
 var resultMsg2 = document.querySelector('.challenger-2-result-message');
 
-minInput.focus();
 
 updateBtn.addEventListener('click', setNumRange);
 submitBtn.addEventListener('click', handleSubmit);
@@ -30,6 +29,10 @@ name1Input.addEventListener('keyup', enableClear);
 name2Input.addEventListener('keyup', enableClear);
 guess1Input.addEventListener('keyup', enableClear);
 guess2Input.addEventListener('keyup', enableClear);
+document.addEventListener('DOMContentLoaded', function () {
+  randomNum = genRanNumber(1, 100);
+  minInput.focus();
+});
 
 //FYI: input fields store in strings and parseInt() will turn into number
 
@@ -52,7 +55,6 @@ function setNumRange(event) {
   var maxNumber = parseInt(maxInput.value);
   updateMinNumHTML.innerText = minNumber;
   updateMaxNumHTML.innerText = maxNumber;
-
   console.log(randomNum);
   // genRanNumber(1, 100);
   // console.log(genRanNumber(minNumber, maxNumber));
