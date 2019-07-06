@@ -80,8 +80,6 @@ p.subtext-header-line::after {
 /********SET RANGE ARTICLE*******/
 
 .range-field {
-  /*font-size: 12px;*/
-  /*display: inline-block;*/
   font-weight: 700;
 }
 
@@ -90,27 +88,21 @@ h3 {
   font-weight: 700;
 }
 
-/*.set-range-form {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-}*/
-
 .set-range {
   font-size: 20px;
-}
-
-.min-range,
-.max-range, {
-  height: 35px;
-  margin: 0;
-  width: 165px;
 }
 
 .min-range-form,
 .max-range-form {
   display: inline-block;
+  width: 36%;
+}
+
+.min-range,
+.max-range {
+  height: 35px;
+  margin-top: 4px;
+  width: 100%;
 }
 
 .min-range-label,
@@ -127,7 +119,7 @@ h3 {
   font-size: 18px;
   font-weight: 700;
   height: 35px;
-  margin: 0px 20px 0px 20px;
+  margin: 0 10px 0 10px;
   text-transform: uppercase;
   width: 111px;
 }
@@ -149,7 +141,7 @@ h3 {
 
 .current-range {
   font-weight: 300;
-  margin: 10px 0px 10px 10px; 
+  margin: 10px 0 10px 0; 
 }
 
 .min-number,
@@ -161,21 +153,16 @@ h3 {
 
 .challenger-1-text,
 .challenger-2-text {
-  /*display: block;*/
   font-size: 18px;
   font-weight: 700;
   height: 20px;
-  margin: 20px 0 30px 0;
-}
-
-.name-1-label,
-.name-2-label {
-  display: block;
-  flex-wrap: wrap;
+  margin: 13px 0 13px 0;
 }
 
 .guess-1-label,
-.guess-2-label {
+.guess-2-label,
+.name-1-label,
+.name-2-label {
   display: block;
   flex-wrap: wrap;
 }
@@ -183,21 +170,36 @@ h3 {
 .challenger-1-form, 
 .challenger-2-form {
   display: flex;
+  flex-direction: row;
 }
 
-.name-1-input,
-.name-2-input {
-  flex-wrap: wrap;
+.name1,
+.name2 {
+  margin-top: 3px;
   width: 60%;
-  height: 35px;
+}
+
+.guess1,
+.guess2 {
+  margin-top: 3px;
+  width: 40%;
 }
 
 .guess-1-input,
-.guess-2-input {
+.guess-2-input,
+.name-1-input,
+.name-2-input {
   flex-wrap: wrap;
   height: 35px;
-  width: 30%;
 }
+
+.name-1-input,
+.name-2-input,
+.guess-1-input,
+.guess-2-input {
+  width: 92%;
+}
+
 
 .button-group {
   display: block;
@@ -259,7 +261,6 @@ h3 {
 /***********WINNER CARD ARTICLE*************/
 
 .right-section{ 
-  /*flex-basis: 100%;*/
   background-color: #D0D2D3;
   color: #6E6E6E;
   display: flex;
@@ -271,12 +272,12 @@ h3 {
   background-color:#F7F7F7;
   border: 2px solid #6e6e6e;
   text-transform: uppercase;
+  font-weight: 800;
 }
 
 .card-header {
   color: white;
   font-weight: 300;
-
 }
 
 h4  {
@@ -288,7 +289,6 @@ h4  {
 .winner-name,
 .winner-text {
   font-size: 33px;
-  font-weight: 800;
   text-align: center;
 }
 
@@ -314,19 +314,16 @@ hr {
 }
 
 footer {
-  margin: 3px;
+  margin: auto;
   display: block;
-  justify-content: space-evenly; 
 }
 
 .winner-number-of-guesses {
   float: left;
-  font-weight: 800;
   margin-right: 2px;
 }
 
 .winner-time {
-  font-weight: 800;
   margin-left: 155px;
 }
 
