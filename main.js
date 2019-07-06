@@ -77,6 +77,12 @@ function handleSubmit(event) {
   clearBtn.disabled = false;
 }
 
+// function enableSubmit {
+//   if (name1Input.innerText != '') {
+//     submitBtn = false;
+//   }
+// }
+
 function updateChallName() {
 
 }
@@ -120,6 +126,8 @@ function displayWinnerCard() {
 
 function handleClear() {
   event.preventDefault();
+  document.querySelector('.min-range-form').reset();
+  document.querySelector('.max-range-form').reset();
   document.querySelector('.challenger-1-form').reset();
   document.querySelector('.challenger-2-form').reset();
   disableClear();
@@ -137,12 +145,9 @@ function enableClear() {
 
 function handleReset() {
   event.preventDefault();
-  document.querySelector('.min-range-form').reset();
-  document.querySelector('.max-range-form').reset();
-  document.querySelector('.challenger-1-form').reset();
-  document.querySelector('.challenger-2-form').reset();
   document.querySelector('.min-number').innerText = '1';
   document.querySelector('.max-number').innerText = '100';
+  handleClear();
   disableReset();
   randomNum = genRanNumber(1, 100);
 }
