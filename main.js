@@ -20,10 +20,16 @@ var currentGuess2 = document.querySelector('#chall-number-2');
 var resultMsg1 = document.querySelector('.challenger-1-result-message');
 var resultMsg2 = document.querySelector('.challenger-2-result-message');
 
+minInput.focus();
+
 updateBtn.addEventListener('click', setNumRange);
 submitBtn.addEventListener('click', handleSubmit);
 clearBtn.addEventListener('click', handleClear);
 resetBtn.addEventListener('click', handleReset);
+name1Input.addEventListener('keyup', enableClear);
+name2Input.addEventListener('keyup', enableClear);
+guess1Input.addEventListener('keyup', enableClear);
+guess2Input.addEventListener('keyup', enableClear);
 
 //FYI: input fields store in strings and parseInt() will turn into number
 
@@ -69,6 +75,8 @@ function handleSubmit(event) {
   player2Name.innerText = name2Input.value;
   name1Input.innerText = parseInt(guess2Input.value);
   displayGuessMessage();
+  resetBtn.disabled = false;
+  clearBtn.disabled = false;
 }
 
 function updateChallName() {
@@ -116,8 +124,16 @@ function handleClear() {
   event.preventDefault();
   document.querySelector('.challenger-1-form').reset();
   document.querySelector('.challenger-2-form').reset();
+  disableClear();
 }
 
+function disableClear() {
+  clearBtn.disabled = true;
+}
+
+function enableClear() {
+  clearBtn.disabled = false;
+}
 
 //reset button will clear the game and reset the random number - button is disabled if there are no values to reset in the form fields
 
@@ -129,10 +145,14 @@ function handleReset() {
   document.querySelector('.challenger-2-form').reset();
   document.querySelector('.min-number').innerText = '1';
   document.querySelector('.max-number').innerText = '100';
+  disableReset();
   randomNum = genRanNumber(1, 100);
-  console.log(randomNum);
 }
 	
+function disableReset() {
+  resetBtn.disabled = true;
+}
+
 function checkform() {
   var f = document.forms["theform"].elements;
   var canreset = true;
