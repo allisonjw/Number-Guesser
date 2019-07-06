@@ -13,6 +13,8 @@ var guess2Input = document.querySelector('.guess-2-input');
 var submitBtn = document.querySelector('.submit-guess-button');
 var resetBtn = document.querySelector('#reset-button');
 var clearBtn = document.querySelector('#clear-button');
+var player1Name = document.querySelector('#player-1-name');
+var player2Name = document.querySelector('#player-2-name');
 var currentGuess1 = document.querySelector('#chall-number-1');
 var currentGuess2 = document.querySelector('#chall-number-2');
 var resultMsg1 = document.querySelector('.challenger-1-result-message');
@@ -62,9 +64,9 @@ function setNumRange(event) {
 function handleSubmit(event) {
   event.preventDefault();
   currentGuess1.innerText = parseInt(guess1Input.value);
-  console.log(currentGuess1.innerText);
   currentGuess2.innerText = parseInt(guess2Input.value);
-  console.log(currentGuess2.innerText);
+  player1Name.innerText = name1Input.value;
+  player2Name.innerText = name2Input.value;
   name1Input.innerText = parseInt(guess2Input.value);
   displayGuessMessage();
 }
