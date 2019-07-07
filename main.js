@@ -13,12 +13,18 @@ var guess2Input = document.querySelector('.guess-2-input');
 var submitBtn = document.querySelector('.submit-guess-button');
 var resetBtn = document.querySelector('#reset-button');
 var clearBtn = document.querySelector('#clear-button');
+var player1Name = document.querySelector('#player-1-name');
+var player2Name = document.querySelector('#player-2-name');
 var currentGuess1 = document.querySelector('#chall-number-1');
 var currentGuess2 = document.querySelector('#chall-number-2');
 var resultMsg1 = document.querySelector('.challenger-1-result-message');
 var resultMsg2 = document.querySelector('.challenger-2-result-message');
-
+var cardField = document.querySelector('.right-section');
+var counter = 0;
+var winner;
+var loser;
 minInput.focus();
+
 
 updateBtn.addEventListener('click', setNumRange);
 submitBtn.addEventListener('click', handleSubmit);
@@ -34,12 +40,12 @@ name1Input.addEventListener('keyup', enableButtons);
 name2Input.addEventListener('keyup', enableButtons);
 guess1Input.addEventListener('keyup', enableButtons);
 guess2Input.addEventListener('keyup', enableButtons);
+
 cardField.addEventListener('click', deleteCard)
 document.addEventListener('DOMContentLoaded', function () {
   randomNum = genRanNumber(1, 100);
   minInput.focus();
 });
-
 
 //FYI: input fields store in strings and parseInt() will turn into number
 
@@ -63,12 +69,7 @@ function setNumRange(event) {
   updateMinNumHTML.innerText = minNumber;
   updateMaxNumHTML.innerText = maxNumber;
 
-  console.log(randomNum);
-  // genRanNumber(1, 100);
-  // console.log(genRanNumber(minNumber, maxNumber));
   randomNum = genRanNumber(minNumber, maxNumber);
-
-  // console.log(randomNum);
 };
 
 //name input fields can accept alpha-numeric character and guess input field can accept ONLY numeric value.
@@ -80,11 +81,12 @@ function setNumRange(event) {
 function handleSubmit(event) {
   event.preventDefault();
   currentGuess1.innerText = parseInt(guess1Input.value);
-  console.log(currentGuess1.innerText);
   currentGuess2.innerText = parseInt(guess2Input.value);
-  console.log(currentGuess2.innerText);
+  player1Name.innerText = name1Input.value;
+  player2Name.innerText = name2Input.value;
   name1Input.innerText = parseInt(guess2Input.value);
   displayGuessMessage();
+  determineWinner();
   resetBtn.disabled = false;
   clearBtn.disabled = false;
 }
@@ -105,6 +107,7 @@ function updateChallGuess() {
 
 //conditional logic that compares the numeric values of the current guesses to the random number generated and then populates the 'too high', 'too low', 'BOOM!' message on the third card, also needs to invoke the function to create the winning card on the right
 
+
 function displayGuessMessage() {
   if (parseInt(currentGuess1.value) > randomNum) {
     resultMsg1.innerText = "That's too high"; 
@@ -112,7 +115,6 @@ function displayGuessMessage() {
     resultMsg1.innerText = "That's too low";
   } else {
     resultMsg1.innerText = "BOOM!";
-    //function to populate card here
   }
 
   if (parseInt(currentGuess2.value) > randomNum) {
@@ -121,7 +123,6 @@ function displayGuessMessage() {
     resultMsg2.innerText = "That's too low";
   } else {
     resultMsg2.innerText = "BOOM!";
-    //function to populate card here
   }
 };  
 
@@ -129,11 +130,44 @@ function checkGuessMessages() {
 
 }
 
-function displayWinnerCard() {
+//determine winner based on submit with currentguess both players to random number.
 
+function determineWinner() {
+  if (parseInt(currentGuess1.value) === randomNum) {
+    var winner = name1Input.value;
+    var loser = name2Input.value;
+    displayWinnerCard(winner, loser);
+  }
+  if (parseInt(currentGuess2.value) === randomNum) {
+    var winner = name2Input.value;
+    var loser =  name1Input.value;
+    displayWinnerCard(winner, loser);
+  }
 }
 
+function countedGuesses() {
+  parseInt(counter.value) +=1;
+}
 
+function displayWinnerCard(winner, loser) {
+  var newCard = `<article class="winner-card">
+          <h4><span class="card-chall-1">${winner}</span>vs<span class="card-chall-2">${loser}</span><h4>
+        <hr />
+        <h3 class="winner-name">${winner}</h3>
+        <p class="winner-text">Winner</p>
+        <hr />
+        <footer class="card-footer">
+          <div><span class="winner-number-of-guesses">47</span>Guesses${counter}<span class="winner-time">1.35</span>minutes<button type="button" class="winner-close-button">X</button></div>
+        </footer>  
+      </article>`
+      cardField.insertAdjacentHTML('afterbegin', newCard);  
+};
+
+function deleteCard(e) {
+  if (e.target.className === 'winner-close-button') {
+    e.target.closest('article').remove();
+  }
+}
 //clear button clears the 4 input fields (guesses and names) but does NOT reset the random number - button is disabled if there are no values in the form fields
 
 function handleClear() {
@@ -163,6 +197,7 @@ function handleReset() {
   event.preventDefault();
   document.querySelector('.min-number').innerText = '1';
   document.querySelector('.max-number').innerText = '100';
+  counter = 0;
   handleClear();
   disableReset();
   randomNum = genRanNumber(1, 100);

@@ -8,7 +8,7 @@
 </head>
 <body>
   <header>
-    <h1><span class="bold-header">Number</span>Guesser<h1>
+    <h1><span class="bold-header">Number</span>Guesser</h1>
       <p class="subtext-header-line">Ultimate Challenger Edition</p>
   </header>
   <main class="container">
@@ -22,31 +22,41 @@
         <form class="max-range-form">  
           <label class="max-range-label">Max Range</label>
           <input type="number" pattern="0-9" class="max-range" id="max-input-field">
-          <button type="button" name="update" class="update-button" id="update-btn">Update</button>
         </form>
-        <p class="error-p-range-1"></p> <!-- added for JS -->
-        <p class="error-p-range-2"></p> <!-- added for JS -->
+          <button type="button" name="update" class="update-button" id="update-btn" disabled="true">Update</button>
+        <p class="error-message-1">Must be lower than Max Range</p> 
+        <p class="error-message-2">Must be higher than Min Range</p> 
       </article>
       <article class="challenger-input-article">
         <p class="current-range">The Current Range is<span class="min-number">1</span>to<span class="max-number">100</span></p>
         <p class="challenger-1-text">Challenger 1</p>
         <form class="challenger-1-form">
+        <div class="name1">
           <label class="name-1-label">Name</label>
           <input type="text" class="name-1-input" id="name-chall-1">
+        </div>
+        <div class="guess1">
           <label class="guess-1-label">Guess</label>
           <input type="number" class="guess-1-input" id="guess-chall-1">
+        </div>
         </form>
-        <p class="error-p-chal-1"></p> <!-- added for JS -->
+        <p class="error-message-3">Please Enter All Information</p> 
         <p class="challenger-2-text">Challenger 2</p>
         <form class="challenger-2-form">
+          <div class="name2">
           <label class="name-2-label">Name</label>
           <input type="text" class="name-2-input" id="name-chall-2">
+        </div>
+        <div class="guess2">
           <label class="guess-2-label">Guess</label>
           <input type="number" class="guess-2-input" id="guess-chall-2">
+        </div>
         </form>
-        <p class="error-p-chal-2"></p> <!-- added for JS -->
+        <p class="error-message-4">Guess is Not a Number</p>
+        <p class="error-message-5">Please Enter a Number in Range</p>
+        <p class="error-message-6">Please Enter All Information</p> 
         <div class="button-group">
-          <button type="submit" name="submit-guess" class="submit-guess-button" id="submit-guess-button">Submit Guess</button>
+          <button type="submit" name="submit-guess" class="submit-guess-button" id="submit-guess-button" disabled="true">Submit Guess</button>
           <button type="submit" name="reset-game" class="reset-game-button" id="reset-button" disabled="true">Reset Game</button>
           <button type="submit" name="clear-game" class="clear-game-button" id="clear-button" disabled="true">Clear Game</button>
         </div>  
@@ -56,7 +66,7 @@
       <div class="latest-score-container">
       <div class="latest-score-right">
         <h3 class="player-name" id="player-1-name">Challenger 1 Name</h3>
-        <p class="current-1-guess">current guess</p>
+        <p class="current-1-guess ">current guess</p>
         <output class="pink-guess" id="chall-number-1">#</output>
         <p class="challenger-1-result-message">placeholder</p>
         </div>
@@ -70,17 +80,6 @@
       </article>  
     </section>
     <section class="right-section">
-      <article class="winner-card">
-        <header class="card-header">
-          <h3><span>Challenger 1 Name</span>vs<span>Challenger 2 Name</span><h3>
-        </header>
-        <h3>Challenger 2 Name</h3>
-        <p class="winner-text">Winner</p>
-        <footer class="card-footer">
-          <p><span class="winner-number-of-guesses">47</span>Guesses<span class="winner-time">1.35</span>minutes</p>
-          <button type="button" class="winner-close-button">X</button>
-        </footer>  
-      </article>  
     </section>
 </main>
 </body>
