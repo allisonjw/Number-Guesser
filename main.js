@@ -28,6 +28,18 @@ name1Input.addEventListener('keyup', enableClear);
 name2Input.addEventListener('keyup', enableClear);
 guess1Input.addEventListener('keyup', enableClear);
 guess2Input.addEventListener('keyup', enableClear);
+minInput.addEventListener('keyup', enableUpdate);
+maxInput.addEventListener('keyup', enableUpdate);
+name1Input.addEventListener('keyup', enableButtons);
+name2Input.addEventListener('keyup', enableButtons);
+guess1Input.addEventListener('keyup', enableButtons);
+guess2Input.addEventListener('keyup', enableButtons);
+cardField.addEventListener('click', deleteCard)
+document.addEventListener('DOMContentLoaded', function () {
+  randomNum = genRanNumber(1, 100);
+  minInput.focus();
+});
+
 
 //FYI: input fields store in strings and parseInt() will turn into number
 
@@ -137,9 +149,13 @@ function disableClear() {
   clearBtn.disabled = true;
 }
 
-function enableClear() {
-  clearBtn.disabled = false;
+function enableUpdate() {
+  updateBtn.disabled = false;
 }
+
+// function enableClear() {
+//   clearBtn.disabled = false;
+// }
 
 //reset button will clear the game and reset the random number - button is disabled if there are no values to reset in the form fields
 
@@ -156,6 +172,11 @@ function disableReset() {
   resetBtn.disabled = true;
 }
 
+function enableButtons () {
+  submitBtn.disabled = false;
+  clearBtn.disabled = false;
+}
+
 function checkform() {
   var f = document.forms["theform"].elements;
   var canreset = true;
@@ -170,9 +191,7 @@ function checkform() {
     }
 }
 
-function disableButtons() {
 
-}
   // ****PHASE TWO***********
 
 //if the update button is clicked and either the min or max range input is left blank a pink error 
