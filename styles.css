@@ -228,7 +228,10 @@ button:hover:disabled {
 
 /********SCORE DISPLAY ARTICLE*********/
 
-.score-display {
+.score-display,
+.latest-score-right,
+.latest-score-left,
+.right-section {
   display: flex;
   flex-direction: column;
 }
@@ -248,8 +251,6 @@ button:hover:disabled {
 .latest-score-right,
 .latest-score-left {
   align-items: center;
-  display: flex;
-  flex-direction: column;
   width: 50%;
 }
 
@@ -268,8 +269,6 @@ button:hover:disabled {
 .right-section{ 
   background-color: #D0D2D3;
   color: #6E6E6E;
-  display: flex;
-  flex-direction: column;
   flex: 1; 
 }
 
@@ -340,3 +339,115 @@ footer {
   width: 23px;
   height: 23px;
 }
+
+
+/***********MEDIA QUERIES**************/
+
+@media screen and (max-width: 1275px) {
+  article {
+    max-width: 100%;
+  }
+
+body {
+    border: 1px solid black;
+    margin: auto;
+    max-width: 85%;
+  }
+} 
+
+@media screen and (max-width: 700px) {
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .left-section {
+    min-width: 100%;
+  }
+
+  .right-section {
+    min-width: 100%;
+  }
+
+  header {
+    height: 115px;
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: 50px;
+  }
+
+  .subtext-header-line {
+    font-size: 22px;
+  }
+
+  .update-button {
+    margin: 16px 10px 8px 10px;
+  }
+  
+  .min-range-form, 
+  .max-range-form {
+    display: block;
+    width: 100%;
+  }
+
+  .challenger-1-form,
+  .challenger-2-form {
+    display: block;
+  }
+
+  .name1,
+  .name2,
+  .guess1,
+  .guess2 {
+     width: 100%;
+     flex-direction: column;
+  }
+
+  .submit-guess-button, 
+  .reset-game-button, 
+  .clear-game-button {
+    width: 100%;
+  }
+
+  .latest-score-container {
+    display: inline;
+  }
+
+  .latest-score-right, 
+  .latest-score-left {
+    align-items: center;
+    width: 100%;
+  }
+  
+  .latest-score-right {
+    border-bottom: 1px solid #D0D2D3;
+    border-right: 0;
+    width: 77%;
+    margin-left: 12%;
+  } 
+
+  h4,
+  .card-chall-1,
+  .card-chall-2 {
+    display: block;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 400px) {
+    header {
+    height: 115px;
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: 39px;
+  }
+
+  .subtext-header-line {
+    font-size: 15px;
+} 
+
+
