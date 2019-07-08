@@ -153,10 +153,10 @@ button:hover:disabled {
   background-color: #D0D2D3;
 }
 
-.reset-game-button:disabled,
-.clear-game-button:disabled {
+button:disabled {
   background-color: #D0D2D3;
 }
+
 /*********CHALL INPUT ARTICLE***********/
 
 .challenger-input-article {

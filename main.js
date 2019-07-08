@@ -25,32 +25,22 @@ var blankRange = document.querySelector('.error-message-2');
 var counter = 0;
 var winner;
 var loser;
-minInput.focus();
-
 
 updateBtn.addEventListener('click', setNumRange);
 updateBtn.addEventListener('click', errorMinMaxRange);
 submitBtn.addEventListener('click', handleSubmit);
 clearBtn.addEventListener('click', handleClear);
 resetBtn.addEventListener('click', handleReset);
-name1Input.addEventListener('keyup', enableClear);
-name2Input.addEventListener('keyup', enableClear);
-guess1Input.addEventListener('keyup', enableClear);
-guess2Input.addEventListener('keyup', enableClear);
 minInput.addEventListener('keyup', enableUpdate);
 maxInput.addEventListener('keyup', enableUpdate);
 name1Input.addEventListener('keyup', enableButtons);
 name2Input.addEventListener('keyup', enableButtons);
 guess1Input.addEventListener('keyup', enableButtons);
 guess2Input.addEventListener('keyup', enableButtons);
-
 cardField.addEventListener('click', deleteCard)
 document.addEventListener('DOMContentLoaded', function () {
   randomNum = genRanNumber(1, 100);
-  minInput.focus();
 });
-
-//FYI: input fields store in strings and parseInt() will turn into number
 
 // ****PHASE ONE***********
 
@@ -75,10 +65,6 @@ function setNumRange(event) {
   randomNum = genRanNumber(minNumber, maxNumber);
 };
 
-//name input fields can accept alpha-numeric character and guess input field can accept ONLY numeric value.
-//when player hits submit button the names and current guesses will be displayed in latest 
-// score(score display article).
-
 //places the values of the player's guesses into the current guess spot on the third card, also invokes the function displayGuessMessage
 
 function handleSubmit(event) {
@@ -93,12 +79,6 @@ function handleSubmit(event) {
   resetBtn.disabled = false;
   clearBtn.disabled = false;
 }
-
-// function enableSubmit {
-//   if (name1Input.innerText != '') {
-//     submitBtn = false;
-//   }
-// }
 
 function updateChallName() {
 
@@ -133,7 +113,7 @@ function checkGuessMessages() {
 
 }
 
-//determine winner based on submit with currentguess both players to random number.
+//determine winner based on submit with current guess compared to random number
 
 function determineWinner() {
   if (parseInt(currentGuess1.value) === randomNum) {
@@ -171,6 +151,7 @@ function deleteCard(e) {
     e.target.closest('article').remove();
   }
 }
+
 //clear button clears the 4 input fields (guesses and names) but does NOT reset the random number - button is disabled if there are no values in the form fields
 
 function handleClear() {
@@ -215,26 +196,7 @@ function enableButtons () {
   clearBtn.disabled = false;
 }
 
-function checkform() {
-  var f = document.forms["theform"].elements;
-  var canreset = true;
-  for (var i = 0; i < f.length; i++) {
-        if (f[i].value.length == 0) cansubmit = false;
-}
-  if (canreset) {
-    document.getElementById('resetBtn').disabled = false;
-    }
-  else {
-    document.getElementById('resetBtn').disabled = 'disabled';
-    }
-}
-
-
   // ****PHASE TWO***********
-
-//if the update button is clicked and either the min or max range input is left blank a pink error 
-//message will be displayed. Messge will be under input box of "please set a min and max range" with 
-// the error icon
 
 function errorMinMaxRange() {
 if (minInput.value === '' || maxInput.value === '') {
