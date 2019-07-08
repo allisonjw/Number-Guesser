@@ -70,11 +70,31 @@ p.subtext-header-line::after {
 .challenger-input-article,
 .score-display,
 .winner-card {
+  background-color: #ffffff;
+  border-radius: 2px;
+  border: 2px solid #D0D2D3;
   margin: 10px;
   padding: 10px;
-  border: 2px solid #D0D2D3;
-  border-radius: 2px;
-  background-color: #ffffff;
+}
+
+.error-message-1,
+.error-message-2,
+.error-message-3,
+.error-message-4,
+.error-message-5,
+.error-message-6 {
+  color: #dd1972;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.pink-error-box {
+  border: 1px solid #dd1972;
+}
+
+.error-img {
+  height: 15px;
+  width: 15px;
 }
 
 /********SET RANGE ARTICLE*******/
