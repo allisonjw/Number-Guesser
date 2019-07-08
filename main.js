@@ -29,7 +29,7 @@ minInput.focus();
 
 
 updateBtn.addEventListener('click', setNumRange);
-updateBtn.addEventListener('click', errorMinMax);
+updateBtn.addEventListener('click', errorMinMaxRange);
 submitBtn.addEventListener('click', handleSubmit);
 clearBtn.addEventListener('click', handleClear);
 resetBtn.addEventListener('click', handleReset);
@@ -236,33 +236,23 @@ function checkform() {
 //message will be displayed. Messge will be under input box of "please set a min and max range" with 
 // the error icon
 
-// function errorEmptyRange() {
-//   if (parseInt(minInput.value === '')) && (parseInt(maxInput.value === '')) {
-//     blankRange.innerHTML = "";
-//     blankRange.insertAdjacentHTML('afterbegin', `<img src="images/error-icon.svg" class="error-img">&nbsp;Please enter both a min and max range number`)
-//     minInput.classList.add('pink-error-box');
-//     maxInput.classList.add('pink-error-box');
-//   } else {
-//     invalidRange.innerText = "";
-//     minInput.classList.remove('pink-error-box');
-//     maxInput.classList.remove('pink-error-box');
-//   }
-// }
-
-function errorMinMax() {
-if (parseInt(maxInput.value) <= parseInt(minInput.value)) {
-    invalidRange.innerHTML = "";
-    invalidRange.insertAdjacentHTML('afterbegin', `<img src="images/error-icon.svg" class="error-img">&nbsp;Min range must be smaller than max range`)
-    minInput.classList.add('pink-error-box');
-    maxInput.classList.add('pink-error-box');
-  } else {
-    invalidRange.innerText = "";
-    minInput.classList.remove('pink-error-box');
-    maxInput.classList.remove('pink-error-box');
+function errorMinMaxRange() {
+if (minInput.value === '' || maxInput.value === '') {
+  blankRange.innerText = ' Please set a min and max range';
+  blankRange.insertAdjacentHTML('afterbegin', `<img src='images/error-icon.svg' class="error-img">`)
+  } 
+  else if (parseInt(maxInput.value) <= parseInt(minInput.value)) {
+  invalidRange.innerHTML = ' Min range must be smaller than max range';
+  invalidRange.insertAdjacentHTML('afterbegin', `<img src="images/error-icon.svg" class="error-img">`)
+  maxInput.classList.add('pink-error-box');
+  maxInput.classList.add('pink-error-box');
+  } else { 
+  invalidRange.innerText = "";
+  blankRange.innerText = "";
+  minInput.classList.remove('pink-error-box');
+  maxInput.classList.remove('pink-error-box');
   }
 }
-
-
 
 //if guessed number in not within defined min/max range when submit button is clicked
 //a pink error message should be diplayed under input box of "guess is higher than range" or "guess 
