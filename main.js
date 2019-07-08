@@ -20,11 +20,14 @@ var currentGuess2 = document.querySelector('#chall-number-2');
 var resultMsg1 = document.querySelector('.challenger-1-result-message');
 var resultMsg2 = document.querySelector('.challenger-2-result-message');
 var cardField = document.querySelector('.right-section');
+var invalidRange = document.querySelector('.error-message-1');
+var blankRange = document.querySelector('.error-message-2');
 var counter = 0;
 var winner;
 var loser;
 
 updateBtn.addEventListener('click', setNumRange);
+updateBtn.addEventListener('click', errorMinMaxRange);
 submitBtn.addEventListener('click', handleSubmit);
 clearBtn.addEventListener('click', handleClear);
 resetBtn.addEventListener('click', handleReset);
@@ -168,9 +171,9 @@ function enableUpdate() {
   updateBtn.disabled = false;
 }
 
-// function enableClear() {
-//   clearBtn.disabled = false;
-// }
+function enableClear() {
+  clearBtn.disabled = false;
+}
 
 //reset button will clear the game and reset the random number - button is disabled if there are no values to reset in the form fields
 
@@ -195,13 +198,23 @@ function enableButtons () {
 
   // ****PHASE TWO***********
 
-
-//if the update button is clicked and either the min or max range input is left blank a pink error message will be displayed. Message will be under input box of "please set a min and max range" with the error icon
-
-function errorEmptyRange() {
-
+function errorMinMaxRange() {
+if (minInput.value === '' || maxInput.value === '') {
+  blankRange.innerText = ' Please set a min and max range';
+  blankRange.insertAdjacentHTML('afterbegin', `<img src='images/error-icon.svg' class="error-img">`)
+  } 
+  else if (parseInt(maxInput.value) <= parseInt(minInput.value)) {
+  invalidRange.innerHTML = ' Min range must be smaller than max range';
+  invalidRange.insertAdjacentHTML('afterbegin', `<img src="images/error-icon.svg" class="error-img">`)
+  maxInput.classList.add('pink-error-box');
+  maxInput.classList.add('pink-error-box');
+  } else { 
+  invalidRange.innerText = "";
+  blankRange.innerText = "";
+  minInput.classList.remove('pink-error-box');
+  maxInput.classList.remove('pink-error-box');
+  }
 }
-
 
 //if guessed number in not within defined min/max range when submit button is clicked
 //a pink error message should be diplayed under input box of "guess is higher than range" or "guess 
