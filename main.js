@@ -21,7 +21,7 @@ var resultMsg1 = document.querySelector('.challenger-1-result-message');
 var resultMsg2 = document.querySelector('.challenger-2-result-message');
 var cardField = document.querySelector('.right-section');
 var invalidRangeError = document.querySelector('.error-message-1');
-// var blankRange = document.querySelector('.error-message-2');
+var blankNameMsg = document.querySelector('.error-message-3');
 var counter = 0;
 var winner;
 var loser;
@@ -31,6 +31,7 @@ minInput.focus();
 updateBtn.addEventListener('click', setNumRange);
 updateBtn.addEventListener('click', errorMinMaxRange);
 submitBtn.addEventListener('click', handleSubmit);
+submitBtn.addEventListener('click', errorEmptyName);
 clearBtn.addEventListener('click', handleClear);
 resetBtn.addEventListener('click', handleReset);
 name1Input.addEventListener('keyup', enableClear);
@@ -43,8 +44,8 @@ name1Input.addEventListener('keyup', enableButtons);
 name2Input.addEventListener('keyup', enableButtons);
 guess1Input.addEventListener('keyup', enableButtons);
 guess2Input.addEventListener('keyup', enableButtons);
-
 cardField.addEventListener('click', deleteCard)
+
 document.addEventListener('DOMContentLoaded', function () {
   randomNum = genRanNumber(1, 100);
   minInput.focus();
@@ -148,9 +149,9 @@ function determineWinner() {
   }
 }
 
-function countedGuesses() {
-  parseInt(counter.value) +=1;
-}
+// function countedGuesses() {
+//   parseInt(counter.value) +=1;
+// }
 
 function displayWinnerCard(winner, loser) {
   var newCard = `<article class="winner-card">
@@ -232,10 +233,6 @@ function checkform() {
 
   // ****PHASE TWO***********
 
-//if the update button is clicked and either the min or max range input is left blank a pink error 
-//message will be displayed. Messge will be under input box of "please set a min and max range" with 
-// the error icon
-
 function errorMinMaxRange() {
 if (minInput.value === '' || maxInput.value === '') {
   invalidRangeError.innerText = ' Please set a min and max range';
@@ -244,7 +241,7 @@ if (minInput.value === '' || maxInput.value === '') {
   else if (parseInt(maxInput.value) <= parseInt(minInput.value)) {
   invalidRangeError.innerHTML = ' Min range must be smaller than max range';
   invalidRangeError.insertAdjacentHTML('afterbegin', `<img src="images/error-icon.svg" class="error-img">`)
-  maxInput.classList.add('pink-error-box');
+  minInput.classList.add('pink-error-box');
   maxInput.classList.add('pink-error-box');
   } else { 
   invalidRangeError.innerText = "";
@@ -268,6 +265,13 @@ function errorGuessTooLow() {
 //will be displayed under input box
 
 function errorEmptyName() {
-
+if (name1Input.value === '') {
+  blankNameMsg.innerText = ' Please enter valid Input';
+  blankNameMsg.insertAdjacentHTML('afterbegin', `<img src='images/error-icon.svg' class="error-img">`)
+  name1Input.classList.add('pink-error-box');
+  } else {
+  blankNameMsg.innerText = "";
+  name1Input.classList.remove('pink-error-box');
+  }
 }
 
