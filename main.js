@@ -20,8 +20,8 @@ var currentGuess2 = document.querySelector('#chall-number-2');
 var resultMsg1 = document.querySelector('.challenger-1-result-message');
 var resultMsg2 = document.querySelector('.challenger-2-result-message');
 var cardField = document.querySelector('.right-section');
-var invalidRange = document.querySelector('.error-message-1');
-var blankRange = document.querySelector('.error-message-2');
+var invalidRangeError = document.querySelector('.error-message-1');
+// var blankRange = document.querySelector('.error-message-2');
 var counter = 0;
 var winner;
 var loser;
@@ -238,17 +238,16 @@ function checkform() {
 
 function errorMinMaxRange() {
 if (minInput.value === '' || maxInput.value === '') {
-  blankRange.innerText = ' Please set a min and max range';
-  blankRange.insertAdjacentHTML('afterbegin', `<img src='images/error-icon.svg' class="error-img">`)
+  invalidRangeError.innerText = ' Please set a min and max range';
+  invalidRangeError.insertAdjacentHTML('afterbegin', `<img src='images/error-icon.svg' class="error-img">`)
   } 
   else if (parseInt(maxInput.value) <= parseInt(minInput.value)) {
-  invalidRange.innerHTML = ' Min range must be smaller than max range';
-  invalidRange.insertAdjacentHTML('afterbegin', `<img src="images/error-icon.svg" class="error-img">`)
+  invalidRangeError.innerHTML = ' Min range must be smaller than max range';
+  invalidRangeError.insertAdjacentHTML('afterbegin', `<img src="images/error-icon.svg" class="error-img">`)
   maxInput.classList.add('pink-error-box');
   maxInput.classList.add('pink-error-box');
   } else { 
-  invalidRange.innerText = "";
-  blankRange.innerText = "";
+  invalidRangeError.innerText = "";
   minInput.classList.remove('pink-error-box');
   maxInput.classList.remove('pink-error-box');
   }
