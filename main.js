@@ -28,17 +28,11 @@ var noGuess2Msg = document.querySelector('.error-message-5');
 var counter = 0;
 var winner;
 var loser;
-minInput.focus();
-
 
 updateBtn.addEventListener('click', setNumRange);
 submitBtn.addEventListener('click', handleSubmit);
 clearBtn.addEventListener('click', handleClear);
 resetBtn.addEventListener('click', handleReset);
-name1Input.addEventListener('keyup', enableClear);
-name2Input.addEventListener('keyup', enableClear);
-guess1Input.addEventListener('keyup', enableClear);
-guess2Input.addEventListener('keyup', enableClear);
 minInput.addEventListener('keyup', enableUpdate);
 maxInput.addEventListener('keyup', enableUpdate);
 name1Input.addEventListener('keyup', enableButtons);
@@ -49,7 +43,6 @@ cardField.addEventListener('click', deleteCard)
 
 document.addEventListener('DOMContentLoaded', function () {
   randomNum = genRanNumber(1, 100);
-  minInput.focus();
 });
 
 //function declaration that generates a random number
@@ -203,8 +196,6 @@ function checkform() {
     document.getElementById('resetBtn').disabled = 'disabled';
     }
 }
-
-  // ****PHASE TWO***********
 
 function errorMinMaxRange() {
 if (minInput.value === '' || maxInput.value === '') {
