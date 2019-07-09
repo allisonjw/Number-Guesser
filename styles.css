@@ -99,10 +99,6 @@ p.subtext-header-line::after {
 
 /********SET RANGE ARTICLE*******/
 
-.range-field {
-  font-weight: 700;
-}
-
 h3 {
   font-size: 18px;
   font-weight: 700;
@@ -110,6 +106,7 @@ h3 {
 
 .set-range {
   font-size: 20px;
+  font-weight: 700;
 }
 
 .min-range-form,
@@ -122,7 +119,7 @@ h3 {
 .max-range {
   height: 35px;
   margin-top: 4px;
-  width: 100%;
+  width: 85%;
 }
 
 .min-range-label,
@@ -222,7 +219,7 @@ button:disabled {
 .name-2-input,
 .guess-1-input,
 .guess-2-input {
-  width: 92%;
+  width: 87%;
 }
 
 
@@ -468,6 +465,14 @@ body {
 
   .subtext-header-line {
     font-size: 15px;
-} 
+  }
+
+  .name1,
+  .name2,
+  .guess1,
+  .guess2 {
+    width: 100%;
+}
+
 
 
