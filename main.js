@@ -21,7 +21,10 @@ var resultMsg1 = document.querySelector('.challenger-1-result-message');
 var resultMsg2 = document.querySelector('.challenger-2-result-message');
 var cardField = document.querySelector('.right-section');
 var invalidRangeError = document.querySelector('.error-message-1');
-var blankNameMsg = document.querySelector('.error-message-3');
+var noName1Msg = document.querySelector('.error-message-2');
+var noName2Msg = document.querySelector('.error-message-4');
+var noGuess1Msg = document.querySelector('.error-message-3');
+var noGuess2Msg = document.querySelector('.error-message-5');
 var counter = 0;
 var winner;
 var loser;
@@ -29,9 +32,7 @@ minInput.focus();
 
 
 updateBtn.addEventListener('click', setNumRange);
-updateBtn.addEventListener('click', errorMinMaxRange);
 submitBtn.addEventListener('click', handleSubmit);
-submitBtn.addEventListener('click', errorEmptyName);
 clearBtn.addEventListener('click', handleClear);
 resetBtn.addEventListener('click', handleReset);
 name1Input.addEventListener('keyup', enableClear);
@@ -51,11 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
   minInput.focus();
 });
 
-//FYI: input fields store in strings and parseInt() will turn into number
-
-// ****PHASE ONE***********
-
-
 //function declaration that generates a random number
 
 function genRanNumber(min, max) {
@@ -72,13 +68,9 @@ function setNumRange(event) {
   var maxNumber = parseInt(maxInput.value);
   updateMinNumHTML.innerText = minNumber;
   updateMaxNumHTML.innerText = maxNumber;
-
   randomNum = genRanNumber(minNumber, maxNumber);
+  errorMinMaxRange();
 };
-
-//name input fields can accept alpha-numeric character and guess input field can accept ONLY numeric value.
-//when player hits submit button the names and current guesses will be displayed in latest 
-// score(score display article).
 
 //places the values of the player's guesses into the current guess spot on the third card, also invokes the function displayGuessMessage
 
@@ -91,26 +83,15 @@ function handleSubmit(event) {
   name1Input.innerText = parseInt(guess2Input.value);
   displayGuessMessage();
   determineWinner();
+  emptyName1();
+  emptyName2();
+  emptyGuess1();
+  emptyGuess2();
   resetBtn.disabled = false;
   clearBtn.disabled = false;
 }
 
-// function enableSubmit {
-//   if (name1Input.innerText != '') {
-//     submitBtn = false;
-//   }
-// }
-
-function updateChallName() {
-
-}
-
-function updateChallGuess() {
-
-}
-
 //conditional logic that compares the numeric values of the current guesses to the random number generated and then populates the 'too high', 'too low', 'BOOM!' message on the third card, also needs to invoke the function to create the winning card on the right
-
 
 function displayGuessMessage() {
   if (parseInt(currentGuess1.value) > randomNum) {
@@ -130,10 +111,6 @@ function displayGuessMessage() {
   }
 };  
 
-function checkGuessMessages() {
-
-}
-
 //determine winner based on submit with currentguess both players to random number.
 
 function determineWinner() {
@@ -148,10 +125,6 @@ function determineWinner() {
     displayWinnerCard(winner, loser);
   }
 }
-
-// function countedGuesses() {
-//   parseInt(counter.value) +=1;
-// }
 
 function displayWinnerCard(winner, loser) {
   var newCard = `<article class="winner-card">
@@ -172,6 +145,7 @@ function deleteCard(e) {
     e.target.closest('article').remove();
   }
 }
+
 //clear button clears the 4 input fields (guesses and names) but does NOT reset the random number - button is disabled if there are no values in the form fields
 
 function handleClear() {
@@ -230,7 +204,6 @@ function checkform() {
     }
 }
 
-
   // ****PHASE TWO***********
 
 function errorMinMaxRange() {
@@ -264,14 +237,47 @@ function errorGuessTooLow() {
 //if submit button is clicked and name is blank a pink error message of "please enter player name!"
 //will be displayed under input box
 
-function errorEmptyName() {
+function emptyName1() {
 if (name1Input.value === '') {
-  blankNameMsg.innerText = ' Please enter valid Input';
-  blankNameMsg.insertAdjacentHTML('afterbegin', `<img src='images/error-icon.svg' class="error-img">`)
+  noName1Msg.innerText = ' Please enter player name';
+  noName1Msg.insertAdjacentHTML('afterbegin', `<img src='images/error-icon.svg' class="error-img">`)
   name1Input.classList.add('pink-error-box');
   } else {
-  blankNameMsg.innerText = "";
+  noName1Msg.innerText = "";
   name1Input.classList.remove('pink-error-box');
+  }
+}
+
+function emptyName2() {
+  if (name2Input.value === '') {
+  noName2Msg.innerText = ' Please enter player name';
+  noName2Msg.insertAdjacentHTML('afterbegin', `<img src='images/error-icon.svg' class="error-img">`)
+  name2Input.classList.add('pink-error-box');
+  } else {
+  noName2Msg.innerText = "";
+  name2Input.classList.remove('pink-error-box');
+  }
+}
+
+function emptyGuess1() {
+if (guess1Input.value === '') {
+  noGuess1Msg.innerText = ' Please enter a guess';
+  noGuess1Msg.insertAdjacentHTML('afterbegin', `<img src='images/error-icon.svg' class="error-img">`)
+  guess1Input.classList.add('pink-error-box');
+  } else {
+  noGuess1Msg.innerText = "";
+  guess1Input.classList.remove('pink-error-box');
+  }
+}
+
+function emptyGuess2() {
+  if (guess2Input.value === '') {
+  noGuess2Msg.innerText = ' Please enter a guess';
+  noGuess2Msg.insertAdjacentHTML('afterbegin', `<img src='images/error-icon.svg' class="error-img">`)
+  guess2Input.classList.add('pink-error-box');
+  } else {
+  noGuess2Msg.innerText = "";
+  guess2Input.classList.remove('pink-error-box');
   }
 }
 
