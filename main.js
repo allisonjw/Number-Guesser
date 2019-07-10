@@ -30,8 +30,8 @@ updateBtn.addEventListener('click', setNumRange);
 submitBtn.addEventListener('click', handleSubmit);
 clearBtn.addEventListener('click', handleClear);
 resetBtn.addEventListener('click', handleReset);
-minInput.addEventListener('keyup', enableUpdate);
-maxInput.addEventListener('keyup', enableUpdate);
+minInput.addEventListener('keyup', toggleUpdate);
+maxInput.addEventListener('keyup', toggleUpdate);
 name1Input.addEventListener('keyup', enableButtons);
 name2Input.addEventListener('keyup', enableButtons);
 guess1Input.addEventListener('keyup', enableButtons);
@@ -39,6 +39,8 @@ guess2Input.addEventListener('keyup', enableButtons);
 cardField.addEventListener('click', deleteCard)
 
 document.addEventListener('DOMContentLoaded', function () {
+  var minNum = 1;
+  var maxNum = 100;
   randomNum = genRanNumber(1, 100);
 });
 
@@ -52,29 +54,38 @@ function setNumRange(event) {
   event.preventDefault();
   var minNumber = parseInt(minInput.value);
   var maxNumber = parseInt(maxInput.value);
-  updateMinNumHTML.innerText = minNumber;
-  updateMaxNumHTML.innerText = maxNumber;
-  randomNum = genRanNumber(minNumber, maxNumber);
-  errorMinMaxRange();
+
+  if (!errorMinMaxRange()) {
+    updateMinNumHTML.innerText = minNumber;
+    updateMaxNumHTML.innerText = maxNumber;
+    randomNum = genRanNumber(minNumber, maxNumber);
+  }
 };
 
 function handleSubmit(event) {
   event.preventDefault();
+  var isName1Empty = emptyName1();
+  var isName2Empty = emptyName2();
+  var isGuess1Empty = emptyGuess1();
+  var isGuess2Empty = emptyGuess2();
+  var isOutsideRange1 = outsideRangeChall1();
+  var isOutsideRange2 = outsideRangeChall2();
+
+  if (!isName1Empty && !isName2Empty && !isGuess1Empty && !isGuess2Empty && !isOutsideRange1 && !isOutsideRange2) {
+    
+    displayGuessMessage();
+    determineWinner();
+    updateHTML();
+  }
+  toggleClear();
+  toggleReset();
+}
+
+function updateHTML() {
   currentGuess1.innerText = parseInt(guess1Input.value);
   currentGuess2.innerText = parseInt(guess2Input.value);
   player1Name.innerText = name1Input.value;
   player2Name.innerText = name2Input.value;
-  name1Input.innerText = parseInt(guess2Input.value);
-  displayGuessMessage();
-  determineWinner();
-  emptyName1();
-  emptyName2();
-  emptyGuess1();
-  emptyGuess2();
-  outsideRangeChall1();
-  outsideRangeChall2();
-  resetBtn.disabled = false;
-  clearBtn.disabled = false;
 }
 
 function displayGuessMessage() {
@@ -116,7 +127,7 @@ function displayWinnerCard(winner, loser) {
         <p class="winner-text">Winner</p>
         <hr />
         <footer class="card-footer">
-          <div><span class="winner-number-of-guesses">47</span>Guesses${counter}<span class="winner-time">1.35</span>minutes<button type="button" class="winner-close-button">X</button></div>
+          <div><span class="winner-number-of-guesses">47 class="winner-time">1.35</span>minutes<button type="button" class="winner-close-button">X</button></div>
         </footer>  
       </article>`
       cardField.insertAdjacentHTML('afterbegin', newCard);  
@@ -141,7 +152,7 @@ function toggleClear() {
   clearBtn.disabled = !clearBtn.disabled;
 }
 
-function enableUpdate() {
+function toggleUpdate() {
   updateBtn.disabled = false;
 }
 
@@ -151,7 +162,7 @@ function handleReset() {
   document.querySelector('.max-number').innerText = '100';
   counter = 0;
   handleClear();
-  disableReset();
+  toggleReset();
   randomNum = genRanNumber(1, 100);
 }
 	
@@ -167,17 +178,20 @@ function enableButtons () {
 function errorMinMaxRange() {
   if (minInput.value === '' || maxInput.value === '') {
     invalidRangeError.innerText = ' Please set a min and max range';
-    invalidRangeError.insertAdjacentHTML('afterbegin', `<img src='images/error-icon.svg' class="error-img">`)
+    invalidRangeError.insertAdjacentHTML('afterbegin', `<img src='images/error-icon.svg' class="error-img">`);
+    return true;
   }
   else if (parseInt(maxInput.value) <= parseInt(minInput.value)) {
     invalidRangeError.innerHTML = ' Min range must be smaller than max range';
     invalidRangeError.insertAdjacentHTML('afterbegin', `<img src="images/error-icon.svg" class="error-img">`)
     minInput.classList.add('pink-error-box');
     maxInput.classList.add('pink-error-box');
+    return true;
   } else { 
     invalidRangeError.innerText = "";
     minInput.classList.remove('pink-error-box');
     maxInput.classList.remove('pink-error-box');
+    return false;
   }
 }
  
@@ -185,21 +199,26 @@ function outsideRangeChall1 () {
   var wrongGuessInput = document.querySelector('.error-message-3');
   if (parseInt(guess1Input.value) <= minInput.value || (parseInt(guess1Input.value) >= maxInput.value)) {
     guess1Input.classList.add ('pink-error-box');
-    wrongGuessInput.innerText = ' Please guess a number within range';
-    wrongGuessInput.insertAdjacentHTML('afterbegin', `<img src="images/error-icon.svg" class="error-img">`)
+    wrongGuessInput.innerText = 'Enter a number within the current range';
+    wrongGuessInput.insertAdjacentHTML('afterbegin', `<img src="images/error-icon.svg" class="error-img">`);
+    return true;
   } else {
     guess1Input.classList.remove('pink-error-box');
+    return false;
   }
 }
 
 function outsideRangeChall2 () {
   var wrongGuessInput = document.querySelector('.error-message-5');
-  if (parseInt(guess2Input.value) <= minInput.value || (parseInt(guess2Input.value) >= maxInput.value)) {
+  if (parseInt(guess2Input.value) <= minInput.value || (
+    parseInt(guess2Input.value) >= maxInput.value)) {  
     guess2Input.classList.add ('pink-error-box');
-    wrongGuessInput.innerText = ' Please guess a number within range';
-    wrongGuessInput.insertAdjacentHTML('afterbegin', `<img src="images/error-icon.svg" class="error-img">`)
+    wrongGuessInput.innerText = 'Enter a number within the current range';
+    wrongGuessInput.insertAdjacentHTML('afterbegin', `<img src="images/error-icon.svg" class="error-img">`);
+    return true;
   } else {
     guess2Input.classList.remove('pink-error-box');
+    return false;
   }
 }
 
@@ -212,9 +231,11 @@ function emptyName1() {
    noName1Msg.innerText = ' Please enter player name';
    noName1Msg.insertAdjacentHTML('afterbegin', `<img src='images/error-icon.svg' class="error-img">`)
    name1Input.classList.add('pink-error-box');
+   return true;
  } else {
    noName1Msg.innerText = "";
    name1Input.classList.remove('pink-error-box');
+   return false;
   }
 }
 
@@ -223,9 +244,11 @@ function emptyName2() {
    noName2Msg.innerText = ' Please enter player name';
    noName2Msg.insertAdjacentHTML('afterbegin', `<img src='images/error-icon.svg' class="error-img">`)
    name2Input.classList.add('pink-error-box');
+   return true;
   } else {
    noName2Msg.innerText = "";
    name2Input.classList.remove('pink-error-box');
+   return false;
   }
 }
 
@@ -234,9 +257,11 @@ function emptyGuess1() {
    noGuess1Msg.innerText = ' Please enter a guess';
    noGuess1Msg.insertAdjacentHTML('afterbegin', `<img src='images/error-icon.svg' class="error-img">`)
    guess1Input.classList.add('pink-error-box');
+   return true;
   } else {
    noGuess1Msg.innerText = "";
    guess1Input.classList.remove('pink-error-box');
+   return false;
   }
 }
 
@@ -245,9 +270,11 @@ function emptyGuess2() {
    noGuess2Msg.innerText = ' Please enter a guess';
    noGuess2Msg.insertAdjacentHTML('afterbegin', `<img src='images/error-icon.svg' class="error-img">`)
    guess2Input.classList.add('pink-error-box');
+   return true;
  } else {
    noGuess2Msg.innerText = "";
    guess2Input.classList.remove('pink-error-box');
+   return false;
   }
 }
 
