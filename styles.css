@@ -126,7 +126,7 @@ h3 {
 .min-range,
 .max-range {
   height: 35px;
-  margin-top: 4px;
+  margin: 4px 0 10px 0;
   width: 85%;
 }
 
@@ -229,7 +229,6 @@ button:disabled {
   width: 87%;
 }
 
-
 .button-group {
   display: block;
   flex-wrap: wrap;
@@ -274,7 +273,7 @@ button:disabled {
 .latest-score-right,
 .latest-score-left {
   align-items: center;
-  width: 50%;
+  width: 49%;
 }
 
 .latest-score-right {
@@ -366,19 +365,34 @@ footer {
 
 /***********MEDIA QUERIES**************/
 
-@media screen and (max-width: 1175px) {
+@media screen and (max-width: 1200px) {
   article {
     max-width: 100%;
   }
 
 body {
-    border: 1px solid black;
     margin: auto;
-    max-width: 85%;
+  }
+
+  .min-range, .max-range {
+    height: 35px;
+    margin: 4px 0 10px 0;
+    width: 88%;
+  }
+
+  .button-group {
+    display: block;
+    margin: 0;
+  }
+
+  .submit-guess-button, 
+  .reset-game-button, 
+  .clear-game-button {
+    width: 100%;
   }
 } 
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 755px) {
   .container {
     display: flex;
     flex-wrap: wrap;
@@ -434,6 +448,19 @@ body {
     width: 100%;
   }
 
+  .button-group {
+   margin: 0;
+  }
+
+  .name-1-input,
+  .name-2-input,
+  .guess-1-input,
+  .guess-2-input,
+  .min-range,
+  .max-range {
+    width: 100%;
+  }
+
   .latest-score-container {
     display: inline;
   }
@@ -447,8 +474,8 @@ body {
   .latest-score-right {
     border-bottom: 1px solid #D0D2D3;
     border-right: 0;
-    width: 77%;
     margin-left: 12%;
+    width: 77%;
   } 
 
   h4,
@@ -456,6 +483,10 @@ body {
   .card-chall-2 {
     display: block;
     text-align: center;
+  }
+
+  .challenger-1-result-message {
+    margin-bottom: 15px;
   }
 }
 
@@ -478,7 +509,29 @@ body {
   .guess1,
   .guess2 {
     width: 100%;
-}
+  }
+
+  .guess-1-input,
+  .guess-2-input,
+  .name-1-input,
+  .name-2-input,
+  .min-range,
+  .max-range {
+    width: 100%;
+  }
+
+  .challenger-1-result-message {
+    margin-bottom: 15px;
+  }
+  .player-1-name,
+  .player-2-name {
+    margin-top: 19px;
+  }
+
+  .pink-guess {
+    font-size: 96px;
+  }
+}    
 
 
 
