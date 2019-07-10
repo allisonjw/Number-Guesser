@@ -59,6 +59,7 @@ function handleSubmit(event) {
 
   if (!isName1Empty && !isName2Empty && !isGuess1Empty && !isGuess2Empty && !isOutsideRange1 && !isOutsideRange2) {
     
+    counter ++;
     updateHTML();
     displayGuessMessage();
     determineWinner();
