@@ -23,6 +23,7 @@ var invalidRangeError = document.querySelector('.error-message-1');
 var noName2Msg = document.querySelector('.error-message-4');
 var noGuess1Msg = document.querySelector('.error-message-3');
 var noGuess2Msg = document.querySelector('.error-message-5');
+var counter = 0;
 var winner;
 var loser;
 
@@ -72,6 +73,7 @@ function handleSubmit(event) {
 
   if (!isName1Empty && !isName2Empty && !isGuess1Empty && !isGuess2Empty && !isOutsideRange1 && !isOutsideRange2) {
     
+    counter ++;
     updateHTML();
     displayGuessMessage();
     determineWinner();
