@@ -19,7 +19,7 @@ var resultMsg1 = document.querySelector('.challenger-1-result-message');
 var resultMsg2 = document.querySelector('.challenger-2-result-message');
 var cardField = document.querySelector('.right-section');
 var invalidRangeError = document.querySelector('.error-message-1');
-var noName1Msg = document.querySelector('.error-message-2');
+// var noName1Msg = document.querySelector('.error-message-2');
 var noName2Msg = document.querySelector('.error-message-4');
 var noGuess1Msg = document.querySelector('.error-message-3');
 var noGuess2Msg = document.querySelector('.error-message-5');
@@ -37,10 +37,9 @@ name2Input.addEventListener('keyup', enableButtons);
 guess1Input.addEventListener('keyup', enableButtons);
 guess2Input.addEventListener('keyup', enableButtons);
 cardField.addEventListener('click', deleteCard)
-
 document.addEventListener('DOMContentLoaded', function () {
-  var minNum = 1;
-  var maxNum = 100;
+  minNumber = 1;
+  maxNumber = 100;
   randomNum = genRanNumber(1, 100);
 });
 
@@ -73,9 +72,9 @@ function handleSubmit(event) {
 
   if (!isName1Empty && !isName2Empty && !isGuess1Empty && !isGuess2Empty && !isOutsideRange1 && !isOutsideRange2) {
     
+    updateHTML();
     displayGuessMessage();
     determineWinner();
-    updateHTML();
   }
   toggleClear();
   toggleReset();
@@ -127,7 +126,7 @@ function displayWinnerCard(winner, loser) {
         <p class="winner-text">Winner</p>
         <hr />
         <footer class="card-footer">
-          <div><span class="winner-number-of-guesses">47 class="winner-time">1.35</span>minutes<button type="button" class="winner-close-button">X</button></div>
+          <div><span class="winner-number-of-guesses">${counter} GUESSES</span><button type="button" class="winner-close-button">X</button></div>
         </footer>  
       </article>`
       cardField.insertAdjacentHTML('afterbegin', newCard);  
@@ -197,9 +196,9 @@ function errorMinMaxRange() {
  
 function outsideRangeChall1 () {
   var wrongGuessInput = document.querySelector('.error-message-3');
-  if (parseInt(guess1Input.value) <= minInput.value || (parseInt(guess1Input.value) >= maxInput.value)) {
+  if (parseInt(guess1Input.value) <= minNumber || (parseInt(guess1Input.value) >= maxNumber)) {
     guess1Input.classList.add ('pink-error-box');
-    wrongGuessInput.innerText = 'Enter a number within the current range';
+    wrongGuessInput.innerText = ' Enter a number within the current range';
     wrongGuessInput.insertAdjacentHTML('afterbegin', `<img src="images/error-icon.svg" class="error-img">`);
     return true;
   } else {
@@ -210,10 +209,11 @@ function outsideRangeChall1 () {
 
 function outsideRangeChall2 () {
   var wrongGuessInput = document.querySelector('.error-message-5');
-  if (parseInt(guess2Input.value) <= minInput.value || (
-    parseInt(guess2Input.value) >= maxInput.value)) {  
+
+  if (parseInt(guess2Input.value) <= minNumber || (
+    parseInt(guess2Input.value) >= maxNumber)) {  
     guess2Input.classList.add ('pink-error-box');
-    wrongGuessInput.innerText = 'Enter a number within the current range';
+    wrongGuessInput.innerText = ' Enter a number within the current range';
     wrongGuessInput.insertAdjacentHTML('afterbegin', `<img src="images/error-icon.svg" class="error-img">`);
     return true;
   } else {
@@ -222,11 +222,9 @@ function outsideRangeChall2 () {
   }
 }
 
-function guessNotNumber() {
-
-}
-
 function emptyName1() {
+ var noName1Msg = document.querySelector('.error-message-2');
+
  if (name1Input.value === '') {
    noName1Msg.innerText = ' Please enter player name';
    noName1Msg.insertAdjacentHTML('afterbegin', `<img src='images/error-icon.svg' class="error-img">`)
@@ -240,6 +238,8 @@ function emptyName1() {
 }
 
 function emptyName2() {
+var noName2Msg = document.querySelector('.error-message-4');
+
   if (name2Input.value === '') {
    noName2Msg.innerText = ' Please enter player name';
    noName2Msg.insertAdjacentHTML('afterbegin', `<img src='images/error-icon.svg' class="error-img">`)
