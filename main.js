@@ -144,7 +144,7 @@ function toggleClear() {
 
 function enableUpdate(event) {
   if (event.target.className === '.min-range' || '.max-range') {
-  updateBtn.disabled = false;
+    updateBtn.disabled = false;
   }
 };
 
@@ -163,7 +163,7 @@ function toggleReset() {
 };
 
 function enableButtons() {
-    if (event.target.className === '.name-1-input' || '.guess-1-input' || '.name-2-input' || '.guess-2-input') {
+  if (event.target.className === '.name-1-input' || '.guess-1-input' || '.name-2-input' || '.guess-2-input') {
     submitBtn.disabled = false;
     clearBtn.disabled = false;
   }
@@ -221,17 +221,17 @@ function outsideRangeChall2() {
 };
 
 function emptyName1() {
- var noName1Msg = document.querySelector('.error-message-2');
+  var noName1Msg = document.querySelector('.error-message-2');
 
- if (name1Input.value === '') {
-   noName1Msg.innerText = ' Please enter player name';
-   noName1Msg.insertAdjacentHTML('afterbegin', `<img src='images/error-icon.svg' class="error-img">`)
-   name1Input.classList.add('pink-error-box');
-   return true;
- } else {
-   noName1Msg.innerText = '';
-   name1Input.classList.remove('pink-error-box');
-   return false;
+  if (name1Input.value === '') {
+    noName1Msg.innerText = ' Please enter player name';
+    noName1Msg.insertAdjacentHTML('afterbegin', `<img src='images/error-icon.svg' class="error-img">`)
+    name1Input.classList.add('pink-error-box');
+    return true;
+  } else {
+    noName1Msg.innerText = '';
+    name1Input.classList.remove('pink-error-box');
+    return false;
   }
 };
 
@@ -239,44 +239,44 @@ function emptyName2() {
   var noName2Msg = document.querySelector('.error-message-4');
 
   if (name2Input.value === '') {
-   noName2Msg.innerText = ' Please enter player name';
-   noName2Msg.insertAdjacentHTML('afterbegin', `<img src='images/error-icon.svg' class="error-img">`)
-   name2Input.classList.add('pink-error-box');
-   return true;
+    noName2Msg.innerText = ' Please enter player name';
+    noName2Msg.insertAdjacentHTML('afterbegin', `<img src='images/error-icon.svg' class="error-img">`)
+    name2Input.classList.add('pink-error-box');
+    return true;
   } else {
-   noName2Msg.innerText = '';
-   name2Input.classList.remove('pink-error-box');
-   return false;
+    noName2Msg.innerText = '';
+    name2Input.classList.remove('pink-error-box');
+    return false;
   }
 };
 
 function emptyGuess1() {
-var noGuess1Msg = document.querySelector('.error-message-3');
+  var noGuess1Msg = document.querySelector('.error-message-3');
 
- if (guess1Input.value === '') {
-   noGuess1Msg.innerText = ' Please enter a guess';
-   noGuess1Msg.insertAdjacentHTML('afterbegin', `<img src='images/error-icon.svg' class="error-img">`)
-   guess1Input.classList.add('pink-error-box');
-   return true;
+  if (guess1Input.value === '') {
+    noGuess1Msg.innerText = ' Please enter a guess';
+    noGuess1Msg.insertAdjacentHTML('afterbegin', `<img src='images/error-icon.svg' class="error-img">`)
+    guess1Input.classList.add('pink-error-box');
+    return true;
   } else {
-   noGuess1Msg.innerText = '';
-   guess1Input.classList.remove('pink-error-box');
-   return false;
+    noGuess1Msg.innerText = '';
+    guess1Input.classList.remove('pink-error-box');
+    return false;
   }
 };
 
 function emptyGuess2() {
   var noGuess2Msg = document.querySelector('.error-message-5');
 
- if (guess2Input.value === '') {
-   noGuess2Msg.innerText = ' Please enter a guess';
-   noGuess2Msg.insertAdjacentHTML('afterbegin', `<img src='images/error-icon.svg' class="error-img">`)
-   guess2Input.classList.add('pink-error-box');
-   return true;
- } else {
-   noGuess2Msg.innerText = '';
-   guess2Input.classList.remove('pink-error-box');
-   return false;
+  if (guess2Input.value === '') {
+    noGuess2Msg.innerText = ' Please enter a guess';
+    noGuess2Msg.insertAdjacentHTML('afterbegin', `<img src='images/error-icon.svg' class="error-img">`)
+    guess2Input.classList.add('pink-error-box');
+    return true;
+  } else {
+    noGuess2Msg.innerText = '';
+    guess2Input.classList.remove('pink-error-box');
+    return false;
   }
 };
 
