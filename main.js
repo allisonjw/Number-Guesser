@@ -194,7 +194,7 @@ function errorMinMaxRange() {
 function outsideRangeChall1() {
   var wrongGuessInput = document.querySelector('.error-message-3');
 
-  if (parseInt(guess1Input.value) <= minNumber || (parseInt(guess1Input.value) >= maxNumber)) {
+  if (parseInt(guess1Input.value) < minNumber || (parseInt(guess1Input.value) > maxNumber)) {
     guess1Input.classList.add ('pink-error-box');
     wrongGuessInput.innerText = ' Enter a number within the current range';
     wrongGuessInput.insertAdjacentHTML('afterbegin', `<img src="images/error-icon.svg" class="error-img">`);
@@ -208,8 +208,8 @@ function outsideRangeChall1() {
 function outsideRangeChall2() {
   var wrongGuessInput = document.querySelector('.error-message-5');
 
-  if (parseInt(guess2Input.value) <= minNumber || (
-    parseInt(guess2Input.value) >= maxNumber)) {  
+  if (parseInt(guess2Input.value) < minNumber || (
+    parseInt(guess2Input.value) > maxNumber)) {  
     guess2Input.classList.add ('pink-error-box');
     wrongGuessInput.innerText = ' Enter a number within the current range';
     wrongGuessInput.insertAdjacentHTML('afterbegin', `<img src="images/error-icon.svg" class="error-img">`);
