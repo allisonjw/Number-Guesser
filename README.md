@@ -7,6 +7,11 @@ Number Guesser is a number guessing game in which two players can define a min a
 
 Number guess is responsive down to 320 px. Utilizing the appropriate media queries you can play this game on desktop or mobile. View this application live on github pages [here](https://allisonjw.github.io/Number-Guesser/) and play on your phone!
 
+### Languages Used
+- HTML
+- CSS
+- JavaScript
+
 ---
 ### Static Comps and Screenshots
 
