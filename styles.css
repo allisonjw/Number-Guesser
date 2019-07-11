@@ -292,6 +292,7 @@ button:disabled {
   background-color: #D0D2D3;
   color: #6E6E6E;
   flex: 1; 
+  padding: 13px;
 }
 
 .winner-card {
@@ -488,16 +489,31 @@ footer {
   .challenger-1-result-message {
     margin-bottom: 15px;
   }
+
+  .player-1-name,
+  .player-2-name {
+    margin-top: 19px;
+  }
+
+  .player-2-name {
+    margin-top: 10px;
+  }
+
+  .chall-number-1,
+  .chall-number-2 {
+    font-size: 120px;
+    font-weight: bolder;
+  }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 433px) {
   header {
-    height: 115px;
+    height: 88px;
     max-width: 100%;
   }
 
   h1 {
-    font-size: 39px;
+    font-size: 36px;
   }
 
   .subtext-header-line {
@@ -528,8 +544,13 @@ footer {
     margin-top: 19px;
   }
 
+  .player-2-name {
+    margin-top: 10px;
+  }
+
   .chall-number-1,
   .chall-number-2 {
-    font-size: 96px;
+    font-size: 120px;
+    font-weight: bolder;
   }
 }    
