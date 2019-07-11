@@ -27,10 +27,14 @@ Number guess is responsive down to px. Using the appropriate media queries you c
 #### Recreation Desktop Layout
 <details>
   <summary> Click to View </summary>
+  
+ ![image](https://user-images.githubusercontent.com/47795464/61015127-9c316880-a347-11e9-85fb-b7325283031c.png)
  </details>
  
  #### Recreation Mobile Layout
 <details>
   <summary> Click to View </summary>
+  
+  ![image](https://user-images.githubusercontent.com/47795464/61015204-c2570880-a347-11e9-9ea6-9e75f2654665.png)
  </details>
   
