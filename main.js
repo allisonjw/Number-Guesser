@@ -38,8 +38,8 @@ function genRanNumber(min, max) {
 
 function setNumRange(event) {
   event.preventDefault();
-  var minNumber = parseInt(minInput.value);
-  var maxNumber = parseInt(maxInput.value);
+  minNumber = parseInt(minInput.value);
+  maxNumber = parseInt(maxInput.value);
 
   if (!errorMinMaxRange()) {
     document.querySelector('.min-number').innerText = minNumber;
@@ -184,7 +184,7 @@ function errorMinMaxRange() {
     maxInput.classList.add('pink-error-box');
     return true;
   } else { 
-    invalidRangeError.innerText = "";
+    invalidRangeError.innerText = '';
     minInput.classList.remove('pink-error-box');
     maxInput.classList.remove('pink-error-box');
     return false;
@@ -200,6 +200,7 @@ function outsideRangeChall1() {
     wrongGuessInput.insertAdjacentHTML('afterbegin', `<img src="images/error-icon.svg" class="error-img">`);
     return true;
   } else {
+    wrongGuessInput.innerText = '';
     guess1Input.classList.remove('pink-error-box');
     return false;
   }
@@ -215,6 +216,7 @@ function outsideRangeChall2() {
     wrongGuessInput.insertAdjacentHTML('afterbegin', `<img src="images/error-icon.svg" class="error-img">`);
     return true;
   } else {
+    wrongGuessInput.innerText = '';
     guess2Input.classList.remove('pink-error-box');
     return false;
   }
